@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading - Islamophobia Detection System</title>
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== REACTIVE LOADING SCREEN ===== */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .loading-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-container {
+            text-align: center;
+            color: white;
+            max-width: 90%;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .loading-logo .logo-icon {
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        .loading-logo .logo-icon img {
+            width: clamp(60px, 15vw, 100px); /* Smaller size */
+            height: auto;
+            object-fit: contain;
+        }
+
+        .loading-logo h2 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .loading-logo p {
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
+
+        .loading-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .loading-spinner {
+            margin: 0;
+        }
+
+        .spinner {
+            width: clamp(40px, 10vw, 60px);
+            height: clamp(40px, 10vw, 60px);
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            margin: 0 auto;
+            animation: spin 1s linear infinite;
+        }
+
+        .loading-progress {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            margin: 0 auto 1rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: 3px;
+            width: 0%;
+            animation: progress 2.5s ease-in-out;
+        }
+
+        .progress-text {
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
+            opacity: 0.9;
+        }
+
+        /* Animations */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+
+        /* ===== RESPONSIVE BREAKPOINTS ===== */
+        @media (max-width: 768px) {
+            .loading-container {
+                padding: 1.5rem;
+            }
+            
+            .loading-content {
+                gap: 1.5rem;
+            }
+            
+            .progress-bar {
+                height: 5px;
+                margin-bottom: 0.8rem;
+            }
+            
+            .loading-logo .logo-icon img {
+                width: clamp(50px, 12vw, 80px); /* Even smaller on tablet */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .loading-container {
+                padding: 1rem;
+            }
+            
+            .loading-logo .logo-icon {
+                margin-bottom: 0.8rem;
+            }
+            
+            .loading-logo .logo-icon img {
+                width: clamp(40px, 10vw, 60px); /* Smallest on mobile */
+            }
+            
+            .loading-logo h2 {
+                margin-bottom: 0.3rem;
+            }
+            
+            .loading-logo p {
+                margin-bottom: 1.5rem;
+            }
+            
+            .loading-content {
+                gap: 1rem;
+            }
+            
+            .progress-bar {
+                height: 4px;
+                margin-bottom: 0.6rem;
+            }
+            
+            .spinner {
+                border-width: 3px;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 320px) {
+            .loading-container {
+                padding: 0.8rem;
+            }
+            
+            .loading-logo h2 {
+                font-size: 1.3rem;
+            }
+            
+            .loading-logo p {
+                font-size: 0.8rem;
+            }
+            
+            .loading-logo .logo-icon img {
+                width: 35px; /* Fixed small size */
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1200px) {
+            .loading-container {
+                max-width: 600px;
+            }
+        }
+
+        /* Landscape mode on mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .loading-container {
+                padding: 1rem;
+                transform: scale(0.9);
+            }
+            
+            .loading-logo .logo-icon img {
+                width: 40px; /* Very small in landscape */
+            }
+            
+            .loading-logo h2 {
+                font-size: 1.3rem;
+                margin-bottom: 0.3rem;
+            }
+            
+            .loading-logo p {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+            
+            .loading-content {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-container">
+            <div class="loading-logo">
+                <div class="logo-icon">
+                    <img src="images/research2.png" alt="Research Logo" class="loading-logo-img">
+                </div>
+                <h2>Islamophobia Analytic System</h2>
+                <p>Hierachical Classification Cross Platform Social Media Data</p>
+            </div>
+            <div class="loading-content">
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                </div>
+                <div class="loading-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <span class="progress-text">Initializing System...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Auto redirect after 2.5 seconds
+        setTimeout(() => {
+            const loadingScreen = document.getElementById('loadingScreen');
+            loadingScreen.classList.add('fade-out');
+            
+            setTimeout(() => {
+                window.location.href = 'AdminLogin.html';
+            }, 500);
+        }, 2500);
+    </script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Data - Islamophobia Detection</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Islamophobia Detection System</h1>
+                <span class="subtitle">Combined Dataset Analysis</span>
+            </div>
+            <nav class="nav-links">
+                <a href="AdminHomePage.html" class="nav-link">← Back to Admin Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Dataset Overview -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Combined Dataset Overview</h2>
+                <p>Comprehensive analysis of all platform data combined</p>
+            </div>
+            
+            <div class="content-card">
+                <h3>Dataset Information</h3>
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Platform</th>
+                                <th>Before Filtering</th>
+                                <th>After Filtering</th>
+                                <th>Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Reddit</td>
+                                <td>4,210</td>
+                                <td>4,210</td>
+                                <td>35.1%</td>
+                            </tr>
+                            <tr>
+                                <td>YouTube</td>
+                                <td>1,090</td>
+                                <td>1,026</td>
+                                <td>8.6%</td>
+                            </tr>
+                            <tr>
+                                <td>X (Twitter)</td>
+                                <td>6,763</td>
+                                <td>6,763</td>
+                                <td>56.4%</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td><strong>Total</strong></td>
+                                <td><strong>12,063</strong></td>
+                                <td><strong>11,999</strong></td>
+                                <td><strong>100%</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Statistics -->
+            <div class="section-header">
+                <h2>Combined Dataset Statistics</h2>
+                <p>Overall analysis of combined platform data</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">11,999</div>
+                    <div class="stat-label">Total Comments</div>
+                    <div class="stat-model">After Filtering</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">300,481</div>
+                    <div class="stat-label">Total Words</div>
+                    <div class="stat-model">Raw Dataset</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">25,998</div>
+                    <div class="stat-label">Unique Words</div>
+                    <div class="stat-model">Vocabulary Size</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">25.04</div>
+                    <div class="stat-label">Avg. Length</div>
+                    <div class="stat-model">Words per comment</div>
+                </div>
+            </div>
+
+            <!-- Word Cloud Section -->
+            <section class="section">
+				<div class="content-card">
+					<h3>Word Cloud Visualization</h3>
+					<p>Most frequent words in the combined dataset (after stopword removal)</p>
+					
+					<!-- Simple Image-based Word Cloud -->
+					<div class="wordcloud-image-container">
+						<img src="images/dataset/combinedwordcloud.jpg" alt="Combined Word Cloud" class="wordcloud-image">
+					</div>
+                
+					<div class="frequent-words">
+						<h4>Top 20 Most Frequent Words:</h4>
+						<div class="word-tags">
+							<span class="word-tag">islamophobia (5157)</span>
+							<span class="word-tag">not (4316)</span>
+							<span class="word-tag">people (2316)</span>
+							<span class="word-tag">about (1861)</span>
+							<span class="word-tag">from (1815)</span>
+							<span class="word-tag">all (1811)</span>
+							<span class="word-tag">muslim (1713)</span>
+							<span class="word-tag">muslims (1708)</span>
+							<span class="word-tag">like (1671)</span>
+							<span class="word-tag">terrorist (1665)</span>
+							<span class="word-tag">just (1534)</span>
+							<span class="word-tag">there (1391)</span>
+							<span class="word-tag">because (1371)</span>
+							<span class="word-tag">terrorists (1208)</span>
+							<span class="word-tag">more (1182)</span>
+							<span class="word-tag">against (1146)</span>
+							<span class="word-tag">islam (1075)</span>
+							<span class="word-tag">amp (1030)</span>
+							<span class="word-tag">out (992)</span>
+							<span class="word-tag">one (971)</span>
+						</div>
+					</div>
+				</div>
+			</section>
+		
+        <!-- Text Statistics -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Text Length Analysis</h2>
+                <p>Distribution of comment lengths in the combined dataset</p>
+            </div>
+            
+             <div class="analysis-grid">
+                <div class="analysis-card">
+                    <h4>Sentence Length Distribution</h4>
+                    <div class="chart-container">
+						<img src="images/dataset/combinedsentencelengthdistribution.jpg" alt="Sentence Length Distribution" class="chart-image">
+					</div>
+					
+                    <div class="distribution-stats">
+						<div class="dist-item">
+							<span class="dist-range">1-10 words</span>
+							<span class="dist-count">1,089 (9.1%)</span>
+						</div>
+						<div class="dist-item">
+							<span class="dist-range">11-20 words</span>
+							<span class="dist-count">2,630 (21.9%)</span>
+						</div>
+						<div class="dist-item">
+							<span class="dist-range">21-30 words</span>
+							<span class="dist-count">2,147 (17.9%)</span>
+						</div>
+						<div class="dist-item">
+							<span class="dist-range">31-40 words</span>
+							<span class="dist-count">2,120 (17.7%)</span>
+						</div>
+						<div class="dist-item">
+							<span class="dist-range">41-50 words</span>
+							<span class="dist-count">1,634 (13.6%)</span>
+						</div>
+						<div class="dist-item">
+							<span class="dist-range">51+ words</span>
+							<span class="dist-count">2,379 (19.8%)</span>
+						</div>
+					</div>
+				</div>
+                
+                <div class="analysis-card">
+                    <h4>Extreme Length Examples</h4>
+                    <div class="extreme-examples">
+                        <div class="extreme-item">
+                            <h5>Longest Comment</h5>
+                            <p><strong>141 words</strong> (Comment Index: 6767)</p>
+                            <p class="example-text">"from article ryan walters oklahomas public schools superintendent said monday any teacher coming from two blue states required pass assessment exam administered prageru oklahomabased conservative nonprofit before getting state certification long am superintendent oklahoma classrooms safeguarded from radical leftist ideology fostered places like california new york walters said statement prager university wiki page notes sources pragerus videos contain misleading factually incorrect information promoting creationism climate change denial slavery racism united states immigration history fascism prageru also accused promoting fascism racism sexism antilgbt politics saying distorts science whitewashes unpleasant aspects historical events back op article one person notes incredible irony state rep john waldron oklahoma democratic party chairman decried test political posturing if want see textbook definition indoctrination about loyalty test teachers said waldron sad echo more paranoid past oklahomas superintendent concerned about alleged liberal indoctrination so result hes mandating conservative indoctrination"</p>
+                        </div>
+                        <div class="extreme-item">
+                            <h5>Shortest Comment</h5>
+                            <p><strong>0 words</strong> (Comment Index: 2480)</p>
+                            <p class="example-text">"" (empty comment)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="data-table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Minimum Length</td>
+                            <td>0 words</td>
+                            <td>Shortest comment in dataset</td>
+                        </tr>
+                        <tr>
+                            <td>Maximum Length</td>
+                            <td>141 words</td>
+                            <td>Longest comment (before truncation)</td>
+                        </tr>
+                        <tr>
+                            <td>Average Length</td>
+                            <td>25.04 words</td>
+                            <td>Mean comment length</td>
+                        </tr>
+                        <tr>
+                            <td>Total Words</td>
+                            <td>300,481</td>
+                            <td>Raw word count before filtering</td>
+                        </tr>
+                        <tr>
+                            <td>Filtered Words</td>
+                            <td>288,753</td>
+                            <td>After stopword removal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Classification Levels -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Classification Levels and Distribution %</h2>
+                <p>Hierarchical classification system applied to combined data</p>
+            </div>
+            
+            <div class="levels-grid">
+                <div class="level-card">
+                    <div class="level-header">
+                        <h3>Level 1: Target Classification</h3>
+                        <span class="level-badge">Target</span>
+                    </div>
+                    <div class="level-content">
+                        <h4>YouTube-Specific Patterns:</h4>
+                        <ul>
+                            <li><strong>Islam:</strong> Discussions about Islamic religion, doctrine, practices</li>
+                            <li><strong>Muslim:</strong> References to Muslim individuals, communities, culture</li>
+                            <li><strong>Other:</strong> General discussions, unrelated content</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="level-card">
+                    <div class="level-header">
+                        <h3>Level 2: Sentiment Classification</h3>
+                        <span class="level-badge">Sentiment</span>
+                    </div>
+                    <div class="level-content">
+                        <h4>Combined-Specific Manifestations:</h4>
+                        <ul>
+                            <li><strong>Promoting Violent:</strong> Direct hate speech, violent rhetoric, explicit prejudice</li>
+                            <li><strong>Nonviolent Hat:</strong> Stereotyping, misinformation, subtle discrimination</li>
+                            <li><strong>Neutral:</strong> Educational content, awareness posts, neutral discussions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <div class="category-distribution">
+                        <div class="k1-distribution">
+                            <h5>Level 1: Target Classification</h5>
+                            <div class="distribution-bar">
+                                <div class="bar-label">Islam</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill islam" style="width: 41.7%"></div>
+                                    <span class="bar-value">41.7%</span>
+                                </div>
+                            </div>
+                            <div class="distribution-bar">
+                                <div class="bar-label">Muslim</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill muslim" style="width: 15.0%"></div>
+                                    <span class="bar-value">15.0%</span>
+                                </div>
+                            </div>
+                            <div class="distribution-bar">
+                                <div class="bar-label">Other</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill other" style="width: 43.3%"></div>
+                                    <span class="bar-value">43.3%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="k2-distribution">
+                            <h5>Level 2: Sentiment Classification</h5>
+                            <div class="distribution-bar">
+                                <div class="bar-label">Promoting Violent</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill neutral" style="width: 11.4%"></div>
+                                    <span class="bar-value">11.4%</span>
+                                </div>
+                            </div>
+                            <div class="distribution-bar">
+                                <div class="bar-label">Nonviolent Hate</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill nonviolent" style="width: 12.9%"></div>
+                                    <span class="bar-value">13%</span>
+                                </div>
+                            </div>
+                            <div class="distribution-bar">
+                                <div class="bar-label">Neutral</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill hate" style="width: 75.7%"></div>
+                                    <span class="bar-value">75.7%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Islamophobia Content Analytic Based On Deep Learning Approach For Hierachical Classification Cross Platform Social Media Data</p>
+        </div>
+    </footer>
+</body>
+</html>

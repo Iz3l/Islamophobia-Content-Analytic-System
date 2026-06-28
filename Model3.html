@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiLSTM-Skipgram-Batch32 - Model Details</title>
+    <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Islamophobia Detection System</h1>
+                <span class="subtitle">Model 3: BiLSTM-Skipgram-Batch32 🥉</span>
+            </div>
+            <nav class="nav-links">
+                <a href="AdminHomePage.html" class="nav-link">← Back to Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Model Overview Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Model Overview</h2>
+                <p>Third best performing model configuration with detailed parameters and performance metrics</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>🥉 Third Best Performing Model</h3>
+                <p>This BiLSTM-Skipgram-Batch32 configuration shows competitive performance with F1-Score (0.678)</p>
+            </div>
+            
+            <div class="model-details-grid">
+                <div class="parameters-card">
+                    <h3>Model Parameters</h3>
+                    <div class="param-grid">
+                        <div class="param-item">
+                            <span class="param-label">Architecture:</span>
+                            <span class="param-value">Bidirectional LSTM</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Embedding:</span>
+                            <span class="param-value">Word2Vec Skipgram</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Hidden Dimensions:</span>
+                            <span class="param-value">256</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Batch Size:</span>
+                            <span class="param-value">32</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Layers:</span>
+                            <span class="param-value">2</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Learning Rate:</span>
+                            <span class="param-value">0.001</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Epochs:</span>
+                            <span class="param-value">20</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Dropout:</span>
+                            <span class="param-value">0.3</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="results-card">
+                    <h3>Performance Results</h3>
+                    <div class="results-grid">
+                        <div class="result-metric">
+                            <span class="metric-label">F1-Score</span>
+                            <span class="metric-value">0.678</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-label">Accuracy</span>
+                            <span class="metric-value">0.810</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-label">Precision</span>
+                            <span class="metric-value">0.680</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-label">Recall</span>
+                            <span class="metric-value">0.679</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-label">Training Time</span>
+                            <span class="metric-value">~100 min</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-label">Parameters</span>
+                            <span class="metric-value">2.1M</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Model Performance Analysis - Vertical Layout -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Model Performance Analysis</h2>
+                <p>Detailed results and visualizations for Model 3</p>
+            </div>
+            
+            <div class="vertical-performance-grid">
+                <!-- Classification Results -->
+                <div class="vertical-result-frame">
+                    <div class="vertical-frame-header">
+                        <h4>Classification Results</h4>
+                        <p>Detailed classification performance across all categories</p>
+                    </div>
+                    <div class="vertical-frame-content">
+                        <div class="large-image-container">
+                            <img src="images/dataset/m3cr.jpg" alt="Model Classification Results" class="large-chart-image">
+                        </div>
+                        <div class="performance-stats-large">
+                            <div class="perf-stat-large">
+                                <span class="stat-name">Accuracy</span>
+                                <span class="stat-value">0.810</span>
+                            </div>
+                            <div class="perf-stat-large">
+                                <span class="stat-name">F1 Score</span>
+                                <span class="stat-value">0.678</span>
+                            </div>
+                            <div class="perf-stat-large">
+                                <span class="stat-name">Precision</span>
+                                <span class="stat-value">0.680</span>
+                            </div>
+                            <div class="perf-stat-large">
+                                <span class="stat-name">Recall</span>
+                                <span class="stat-value">0.679</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Confusion Matrix -->
+                <div class="vertical-result-frame">
+                    <div class="vertical-frame-header">
+                        <h4>Confusion Matrix</h4>
+                        <p>Model prediction vs actual classification results</p>
+                    </div>
+                    <div class="vertical-frame-content">
+                        <div class="large-image-container">
+                            <img src="images/dataset/m3cm.jpg" alt="Model Confusion Matrix" class="large-chart-image">
+                        </div>
+                        <div class="matrix-explanation">
+                            <h5>Understanding the Confusion Matrix</h5>
+                            <p>The confusion matrix shows how the model's predictions compare to the actual labels:</p>
+                            <ul>
+                                <li><strong>Diagonal elements</strong> represent correct predictions</li>
+                                <li><strong>Off-diagonal elements</strong> show misclassifications</li>
+                                <li>Darker colors indicate higher counts</li>
+                                <li>Skipgram embeddings show different confusion patterns compared to CBOW models</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Loss Function -->
+                <div class="vertical-result-frame">
+                    <div class="vertical-frame-header">
+                        <h4>Loss Function</h4>
+                        <p>Training and validation loss over epochs</p>
+                    </div>
+                    <div class="vertical-frame-content">
+                        <div class="large-image-container">
+                            <img src="images/dataset/m3lf.jpg" alt="Model Loss Function" class="large-chart-image">
+                        </div>
+                        <div class="loss-explanation">
+                            <h5>Loss Function Analysis</h5>
+                            <p>The loss function shows how well the model learned during training:</p>
+                            <ul>
+                                <li><strong>Training Loss</strong> decreases as the model learns patterns</li>
+                                <li><strong>Validation Loss</strong> indicates generalization performance</li>
+                                <li>Skipgram embeddings may show different convergence patterns than CBOW</li>
+                                <li>Convergence shows optimal training completion</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Misclassification Analysis Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Misclassification Analysis</h2>
+                <p>Understanding where and why the model makes incorrect predictions</p>
+            </div>
+            
+            <div class="misclassification-analysis">
+                <!-- Misclassification Rate -->
+                <div class="misclassification-item">
+                    <div class="misclassification-header">
+                        <div class="metric-icon">📊</div>
+                        <h3>Misclassification Rates</h3>
+                    </div>
+                    <div class="misclassification-content">
+                        <div class="misclassification-image">
+                            <img src="images/dataset/m3hb1.jpg" alt="Misclassification Rates" class="side-image">
+                        </div>
+                        <div class="misclassification-explanation">
+                            <h4>Interpretation</h4>
+                            <p>This chart shows the misclassification rates for both Target and Sentiment levels.</p>
+                            <div class="key-findings">
+                                <h5>Key Findings:</h5>
+                                <ul>
+                                    <li><strong>Overall Performance:</strong> The “Both Correct” rate is 67.6%, which is lower than that of the top-performing CBOW-based models, indicating a higher overall misclassification rate.</li>
+                                    <li><strong>Target Level Performance:</strong> “Target Wrong Only” accounts for 5.5% of cases. This suggests Skipgram embeddings produce different target classification patterns compared to CBOW models, though target accuracy remains relatively strong.</li>
+                                    <li><strong>K2 Level Performance:</strong> “Sentiment Wrong Only” is 21.9%, showing that sentiment classification remains the primary challenge—consistent with other models using severity as the second level.</li>
+                                    <li><strong>Embedding Comparison:</strong> Skipgram results in a distinct error distribution, with notably higher rates in both “Sentiment Wrong Only” and “Both Wrong” (5.0%) compared to CBOW-based models. This indicates that Skipgram may handle hierarchical label dependencies differently, leading to more combined errors.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+					
+                                        <div class="misclassification-header"></div>
+					<div class="misclassification-image">
+						<img src="images/dataset/m3hb2v2.jpg" alt="Misclassification Breakdown" class="side-image">
+					</div>
+					<div class="misclassification-explanation">
+						<h4>Interpretation</h4>
+						<p>This breakdown shows how errors are distributed across the hierarchical classification system.</p>
+						<div class="breakdown-stats">
+							<div class="breakdown-item correct">
+								<span class="percentage">67.6%</span>
+								<span class="label">Completely Correct</span>
+							</div>
+							<div class="breakdown-item k2-error">
+								<span class="percentage">29.1%</span>
+								<span class="label">Sentiment Errors Only</span>
+							</div>
+							<div class="breakdown-item k1-error">
+								<span class="percentage">5.5%</span>
+								<span class="label">Target Errors Only</span>
+							</div>
+							<div class="breakdown-item both-error">
+								<span class="percentage">5.0%</span>
+								<span class="label">Both Levels Wrong</span>
+							</div>
+						</div>
+						
+						<!-- Interactive Example Sentences Section -->
+						<div class="example-sentences">
+							<h5>Example Sentences by Classification (Click to View):</h5>
+							<div class="sentence-tabs">
+								<button class="sentence-tab active" data-category="hate">
+									<span class="tab-icon">⚠️</span>
+									<span class="tab-name">Promoting Violent</span>
+								</button>
+								<button class="sentence-tab" data-category="nonviolent">
+									<span class="tab-icon">🗣️</span>
+									<span class="tab-name">Nonviolent Hate</span>
+								</button>
+								<button class="sentence-tab" data-category="neutral">
+									<span class="tab-icon">⚖️</span>
+									<span class="tab-name">Neutral</span>
+								</button>
+							</div>
+							
+							<div class="sentence-content">
+								<div class="sentence-panel active" id="hate-panel">
+									<div class="sentence-example">
+										"islamophobia is a joke you ll be phobic about something that would be harmful to you or your way of life look at the attacks in leicester uk where hindus were attacked by muslims let s not forget about the sky rocketting crime rate of europe after the arrival of the syrian refugees."
+									</div>
+									<div class="sentence-analysis">
+										<h6>Model Analysis:</h6>
+										<div class="analysis-details">
+											<div class="analysis-item">
+												<span class="analysis-label">Target Classification:</span>
+												<span class="analysis-value hate-text">Islam (Target Group)</span>
+											</div>
+											<div class="analysis-item">
+												<span class="analysis-label">Sentiment Classification:</span>
+												<span class="analysis-value hate-text">Promoting Violent</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="sentence-panel" id="nonviolent-panel">
+									<div class="sentence-example">
+										"islam is right wing to understand why this video doesn t hold up just replace the word muslim with republican like the us party it is not ok to tail them around town as if they were criminals nor paint all of them as bigots but being against their ideology is reasonable in many contexts the red herring philosophytube uses in dealing with islamophobia is the topic of trroism but you can be against islam without that being one of the reasons most people opposing and suffering under islam are from islamic societies and are not interested in sam harris or robert spencer islam is right wing need it be i do know a few left wing muslims but most muslims say yes classes the state sexism homophobia empire creationism one religion better than the others etc etc that s islam as soon as there is also a left wing visible accessible version of islam and the hundreds of millions of victims of religious conservatism are supported in some way then maybe islamophobia will be a legit concept."
+									</div>
+									<div class="sentence-analysis">
+										<h6>Model Analysis:</h6>
+										<div class="analysis-details">
+											<div class="analysis-item">
+												<span class="analysis-label">Target Classification:</span>
+												<span class="analysis-value nonviolent-text">Islam (Target Group)</span>
+											</div>
+											<div class="analysis-item">
+												<span class="analysis-label">Sentiment Classification:</span>
+												<span class="analysis-value nonviolent-text">Nonviolent Hate</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="sentence-panel" id="neutral-panel">
+									<div class="sentence-example">
+										"making up for the mistake of linking muslims to terrorism creating islamophobia what is the public reality now are they accepted or tolerated there is a difference between the two."
+									</div>
+									<div class="sentence-analysis">
+										<h6>Model Analysis:</h6>
+										<div class="analysis-details">
+											<div class="analysis-item">
+												<span class="analysis-label">Target Classification:</span>
+												<span class="analysis-value neutral-text">Muslim (Target Group)</span>
+											</div>
+											<div class="analysis-item">
+												<span class="analysis-label">Sentiment Classification:</span>
+												<span class="analysis-value neutral-text">Neutral</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="classification-guide">
+								<h6>Classification Guide:</h6>
+								<div class="guide-items">
+									<div class="guide-item">
+										<div class="guide-color hate-guide"></div>
+										<span class="guide-text"><strong>Promoting Hate:</strong> Direct incitement, threats, or calls for violence</span>
+									</div>
+									<div class="guide-item">
+										<div class="guide-color nonviolent-guide"></div>
+										<span class="guide-text"><strong>Nonviolent Hate:</strong> Prejudice, discrimination, or negative stereotyping</span>
+									</div>
+									<div class="guide-item">
+										<div class="guide-color neutral-guide"></div>
+										<span class="guide-text"><strong>Neutral:</strong> Factual statements without negative sentiment</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="insight">
+							<strong>Insight:</strong> Model performs exceptionally well on sentiment classification, with errors mostly isolated to sentiment only. Target classification is slightly more challenging but still strong.
+						</div>
+					</div>
+                </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Islamophobia Content Analytic Based On Deep Learning Approach For Hierachical Classification Cross Platform Social Media Data</p>
+        </div>
+    </footer>
+	
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const tabs = document.querySelectorAll('.sentence-tab');
+		
+		tabs.forEach(tab => {
+			tab.addEventListener('click', function() {
+				// Remove active class from all tabs
+				tabs.forEach(t => t.classList.remove('active'));
+				
+				// Add active class to clicked tab
+				this.classList.add('active');
+				
+				const category = this.getAttribute('data-category');
+				
+				// Hide all panels
+				document.querySelectorAll('.sentence-panel').forEach(panel => {
+					panel.classList.remove('active');
+				});
+				
+				// Show selected panel
+				document.getElementById(`${category}-panel`).classList.add('active');
+			});
+		});
+	});
+	</script>
+	
+</body>
+</html>

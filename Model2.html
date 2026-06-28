@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiLSTM-CBOW-Batch32 - Model Details</title>
+	<link rel="stylesheet" href="style4.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Islamophobia Detection System</h1>
+                <span class="subtitle">Model 2: BiLSTM-CBOW-Batch32 🥈</span>
+            </div>
+            <nav class="nav-links">
+                <a href="AdminHomePage.html" class="nav-link">← Back to Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Model Overview Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Model Overview</h2>
+                <p>Second best performing model configuration with detailed parameters and performance metrics</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>🥈 Second Best Performing Model</h3>
+                <p>This BiLSTM-CBOW-Batch32 configuration achieved strong performance with F1-Score (0.781)</p>
+            </div>
+            
+            <div class="model-details-grid">
+                <div class="parameters-card">
+                    <h3>Model Parameters</h3>
+                    <div class="param-grid">
+                        <div class="param-item">
+                            <span class="param-label">Architecture:</span>
+                            <span class="param-value">Bidirectional LSTM</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Embedding:</span>
+                            <span class="param-value">Word2Vec CBOW</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Hidden Dimensions:</span>
+                            <span class="param-value">256</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Batch Size:</span>
+                            <span class="param-value">32</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Layers:</span>
+                            <span class="param-value">2</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Learning Rate:</span>
+                            <span class="param-value">0.001</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Epochs:</span>
+                            <span class="param-value">20</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Dropout:</span>
+                            <span class="param-value">0.3</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="results-card">
+                    <h3>Performance Results</h3>
+                    <div class="results-grid">
+                        <div class="result-metric">
+                            <span class="metric-label">F1-Score</span>
+                            <span class="metric-value">0.781</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-label">Accuracy</span>
+                            <span class="metric-value">0.879</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-label">Precision</span>
+                            <span class="metric-value">0.782</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-label">Recall</span>
+                            <span class="metric-value">0.789</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-label">Training Time</span>
+                            <span class="metric-value">~105 min</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-label">Parameters</span>
+                            <span class="metric-value">2.1M</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Model Performance Analysis - Vertical Layout -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Model Performance Analysis</h2>
+                <p>Detailed results and visualizations for Model 2</p>
+            </div>
+            
+            <div class="vertical-performance-grid">
+                <!-- Classification Results -->
+                <div class="vertical-result-frame">
+                    <div class="vertical-frame-header">
+                        <h4>Classification Results</h4>
+                        <p>Detailed classification performance across all categories</p>
+                    </div>
+                    <div class="vertical-frame-content">
+                        <div class="large-image-container">
+                            <img src="images/dataset/m2cr.jpg" alt="Model Classification Results" class="large-chart-image">
+                        </div>
+                        <div class="performance-stats-large">
+                            <div class="perf-stat-large">
+                                <span class="stat-name">Accuracy</span>
+                                <span class="stat-value">0.879</span>
+                            </div>
+                            <div class="perf-stat-large">
+                                <span class="stat-name">F1 Score</span>
+                                <span class="stat-value">0.781</span>
+                            </div>
+                            <div class="perf-stat-large">
+                                <span class="stat-name">Precision</span>
+                                <span class="stat-value">0.782</span>
+                            </div>
+                            <div class="perf-stat-large">
+                                <span class="stat-name">Recall</span>
+                                <span class="stat-value">0.789</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Confusion Matrix -->
+                <div class="vertical-result-frame">
+                    <div class="vertical-frame-header">
+                        <h4>Confusion Matrix</h4>
+                        <p>Model prediction vs actual classification results</p>
+                    </div>
+                    <div class="vertical-frame-content">
+                        <div class="large-image-container">
+                            <img src="images/dataset/m2cm.jpg" alt="Model Confusion Matrix" class="large-chart-image">
+                        </div>
+                        <div class="matrix-explanation">
+                            <h5>Understanding the Confusion Matrix</h5>
+                            <p>The confusion matrix shows how the model's predictions compare to the actual labels:</p>
+                            <ul>
+                                <li><strong>Diagonal elements</strong> represent correct predictions</li>
+                                <li><strong>Off-diagonal elements</strong> show misclassifications</li>
+                                <li>Darker colors indicate higher counts</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Loss Function -->
+                <div class="vertical-result-frame">
+                    <div class="vertical-frame-header">
+                        <h4>Loss Function</h4>
+                        <p>Training and validation loss over epochs</p>
+                    </div>
+                    <div class="vertical-frame-content">
+                        <div class="large-image-container">
+                            <img src="images/dataset/m2lf.jpg" alt="Model Loss Function" class="large-chart-image">
+                        </div>
+                        <div class="loss-explanation">
+                            <h5>Loss Function Analysis</h5>
+                            <p>The loss function shows how well the model learned during training:</p>
+                            <ul>
+                                <li><strong>Training Loss</strong> decreases as the model learns patterns</li>
+                                <li><strong>Validation Loss</strong> indicates generalization performance</li>
+                                <li>Convergence shows optimal training completion</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Misclassification Analysis Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Misclassification Analysis</h2>
+                <p>Understanding where and why the model makes incorrect predictions</p>
+            </div>
+            
+            <div class="misclassification-analysis">
+                <!-- Misclassification Rate -->
+                <div class="misclassification-item">
+                    <div class="misclassification-header">
+                        <div class="metric-icon">📊</div>
+                        <h3>Misclassification Rates</h3>
+                    </div>
+                    <div class="misclassification-content">
+                        <div class="misclassification-image">
+                            <img src="images/dataset/m2hb1.jpg" alt="Misclassification Rates" class="side-image">
+                        </div>
+                        <div class="misclassification-explanation">
+                            <h4>Interpretation</h4>
+                            <p>This chart shows the misclassification rates for both K1 (Target) and K2 (Severity) levels.</p>
+                            <div class="key-findings">
+                                <h5>Key Findings:</h5>
+                                <ul>
+                                    <li><strong>Sentiment Level Performance:</strong> Excellent performance with very low error rates.</li>
+                                    <li><strong>Target Level Performance:</strong> Shows moderate difficulty, accounting for the majority of errors.</li>
+                                    <li><strong>Overall Performance:</strong> Strong overall, with nearly 80% of predictions fully correct.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+					
+                    <div class="misclassification-header"></div>
+					<div class="misclassification-image">
+						<img src="images/dataset/m2hb2.jpg" alt="Misclassification Breakdown" class="side-image">
+					</div>
+					<div class="misclassification-explanation">
+						<h4>Interpretation</h4>
+						<p>This breakdown shows how errors are distributed across the hierarchical classification system.</p>
+						<div class="breakdown-stats">
+							<div class="breakdown-item correct">
+								<span class="percentage">78.5%</span>
+								<span class="label">Completely Correct</span>
+							</div>
+							<div class="breakdown-item k2-error">
+								<span class="percentage">14.3%</span>
+								<span class="label">Sentiment Errors Only</span>
+							</div>
+							<div class="breakdown-item k1-error">
+								<span class="percentage">4.6%</span>
+								<span class="label">Target Errors Only</span>
+							</div>
+							<div class="breakdown-item both-error">
+								<span class="percentage">2.5%</span>
+								<span class="label">Both Levels Wrong</span>
+							</div>
+						</div>
+						
+						<!-- Interactive Example Sentences Section -->
+						<div class="example-sentences">
+							<h5>Example Sentences by Classification (Click to View):</h5>
+							<div class="sentence-tabs">
+								<button class="sentence-tab active" data-category="hate">
+									<span class="tab-icon">⚠️</span>
+									<span class="tab-name">Promoting Violent</span>
+								</button>
+								<button class="sentence-tab" data-category="nonviolent">
+									<span class="tab-icon">🗣️</span>
+									<span class="tab-name">Nonviolent Hate</span>
+								</button>
+								<button class="sentence-tab" data-category="neutral">
+									<span class="tab-icon">⚖️</span>
+									<span class="tab-name">Neutral</span>
+								</button>
+							</div>
+							
+							<div class="sentence-content">
+								<div class="sentence-panel active" id="hate-panel">
+									<div class="sentence-example">
+										"refusing to make social change on islams behalf is not discrimination or islamophobia thats separation of mosque and state."
+									</div>
+									<div class="sentence-analysis">
+										<h6>Model Analysis:</h6>
+										<div class="analysis-details">
+											<div class="analysis-item">
+												<span class="analysis-label">Target Classification:</span>
+												<span class="analysis-value hate-text">Islam (Target Group)</span>
+											</div>
+											<div class="analysis-item">
+												<span class="analysis-label">Sentiment Classification:</span>
+												<span class="analysis-value hate-text">Promoting Violent</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="sentence-panel" id="nonviolent-panel">
+									<div class="sentence-example">
+										"foreign minister of a country home to over 80 banned terrorist outfits complains about islamophobia."
+									</div>
+									<div class="sentence-analysis">
+										<h6>Model Analysis:</h6>
+										<div class="analysis-details">
+											<div class="analysis-item">
+												<span class="analysis-label">Target Classification:</span>
+												<span class="analysis-value nonviolent-text">Islam (Target Group)</span>
+											</div>
+											<div class="analysis-item">
+												<span class="analysis-label">Sentiment Classification:</span>
+												<span class="analysis-value nonviolent-text">Nonviolent Hate</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="sentence-panel" id="neutral-panel">
+									<div class="sentence-example">
+										"yet you like national socialist muslims like hamas"
+									</div>
+									<div class="sentence-analysis">
+										<h6>Model Analysis:</h6>
+										<div class="analysis-details">
+											<div class="analysis-item">
+												<span class="analysis-label">Target Classification:</span>
+												<span class="analysis-value neutral-text">Muslim (Target Group)</span>
+											</div>
+											<div class="analysis-item">
+												<span class="analysis-label">Sentiment Classification:</span>
+												<span class="analysis-value neutral-text">Neutral</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="classification-guide">
+								<h6>Classification Guide:</h6>
+								<div class="guide-items">
+									<div class="guide-item">
+										<div class="guide-color hate-guide"></div>
+										<span class="guide-text"><strong>Promoting Hate:</strong> Direct incitement, threats, or calls for violence</span>
+									</div>
+									<div class="guide-item">
+										<div class="guide-color nonviolent-guide"></div>
+										<span class="guide-text"><strong>Nonviolent Hate:</strong> Prejudice, discrimination, or negative stereotyping</span>
+									</div>
+									<div class="guide-item">
+										<div class="guide-color neutral-guide"></div>
+										<span class="guide-text"><strong>Neutral:</strong> Factual statements without negative sentiment</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="insight">
+							<strong>Insight:</strong> Model performs exceptionally well on sentiment classification, with errors mostly isolated to sentiment only. Target classification is slightly more challenging but still strong.
+						</div>
+					</div>
+				</div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Islamophobia Content Analytic Based On Deep Learning Approach For Hierachical Classification Cross Platform Social Media Data</p>
+        </div>
+    </footer>
+	
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		const tabs = document.querySelectorAll('.sentence-tab');
+		
+		tabs.forEach(tab => {
+			tab.addEventListener('click', function() {
+				// Remove active class from all tabs
+				tabs.forEach(t => t.classList.remove('active'));
+				
+				// Add active class to clicked tab
+				this.classList.add('active');
+				
+				const category = this.getAttribute('data-category');
+				
+				// Hide all panels
+				document.querySelectorAll('.sentence-panel').forEach(panel => {
+					panel.classList.remove('active');
+				});
+				
+				// Show selected panel
+				document.getElementById(`${category}-panel`).classList.add('active');
+			});
+		});
+	});
+	</script>
+	
+</body>
+</html>

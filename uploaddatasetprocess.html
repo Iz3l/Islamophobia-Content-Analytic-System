@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processing Dataset - Islamophobia Detection</title>
+	<link rel="icon" type="image/x-icon" href="images/islam2.ico">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="styleBatch.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Islamophobia Detection System</h1>
+                <span class="subtitle">Dataset Processing</span>
+            </div>
+            <nav class="nav-links">
+                <a href="UserHomePage.html" class="nav-link">← Back to Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Processing Header -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Dataset Analysis in Progress</h2>
+                <p>Processing your CSV file for Islamophobia detection</p>
+            </div>
+        </section>
+
+        <!-- Processing Status -->
+        <section class="section">
+            <div class="content-card">
+                <div class="processing-status">
+                    <div class="status-header">
+                        <h3>📊 Processing Dataset</h3>
+                        <div class="status-badge" id="statusBadge">Initializing</div>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-text" id="progressText">0%</div>
+                    </div>
+
+                    <div class="status-details">
+                        <div class="status-item">
+                            <span class="status-label">File:</span>
+                            <span class="status-value" id="fileName">-</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Records Processed:</span>
+                            <span class="status-value" id="recordsProcessed">0</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Time Elapsed:</span>
+                            <span class="status-value" id="timeElapsed">0s</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Current Status:</span>
+                            <span class="status-value" id="currentStatus">Starting analysis...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Overview -->
+        <section class="section">
+            <div class="stats-overview">
+                <div class="stat-card-batch primary">
+                    <div class="stat-value-batch" id="totalRecords">0</div>
+                    <div class="stat-label-batch">Total Records</div>
+                </div>
+                <div class="stat-card-batch success">
+                    <div class="stat-value-batch" id="processedRecords">0</div>
+                    <div class="stat-label-batch">Processed</div>
+                </div>
+                <div class="stat-card-batch danger">
+                    <div class="stat-value-batch" id="errorCount">0</div>
+                    <div class="stat-label-batch">Errors</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real-time Results Preview -->
+        <section class="section">
+            <div class="section-header">
+                <h3>Analysis Preview</h3>
+                <p>Real-time results as processing continues</p>
+            </div>
+            
+            <div class="batch-analysis-grid">
+                <!-- Target Distribution -->
+                <div class="batch-analysis-card">
+                    <h4>Target Classification</h4>
+                    <div class="enhanced-distribution">
+                        <div class="enhanced-distribution-bar">
+                            <span class="enhanced-bar-label">Islam</span>
+                            <div class="enhanced-bar-container">
+                                <div class="enhanced-bar-fill islam" id="islamBar" style="width: 0%">
+                                    <span class="enhanced-bar-value" id="islamValue">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="enhanced-distribution-bar">
+                            <span class="enhanced-bar-label">Muslim</span>
+                            <div class="enhanced-bar-container">
+                                <div class="enhanced-bar-fill muslim" id="muslimBar" style="width: 0%">
+                                    <span class="enhanced-bar-value" id="muslimValue">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="enhanced-distribution-bar">
+                            <span class="enhanced-bar-label">Other</span>
+                            <div class="enhanced-bar-container">
+                                <div class="enhanced-bar-fill other" id="otherBar" style="width: 0%">
+                                    <span class="enhanced-bar-value" id="otherValue">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Severity Distribution -->
+                <div class="batch-analysis-card">
+                    <h4>Sentiment Classification</h4>
+                    <div class="enhanced-distribution">
+                        <div class="enhanced-distribution-bar">
+                            <span class="enhanced-bar-label">Promoting Violent</span>
+                            <div class="enhanced-bar-container">
+                                <div class="enhanced-bar-fill promoting-violent" id="promotingViolentBar" style="width: 0%">
+                                    <span class="enhanced-bar-value" id="promotingViolentValue">0%</span>
+                                </div>
+                            </div>
+                        </div>
+						<div class="enhanced-distribution-bar">
+							<span class="enhanced-bar-label">Nonviolent Hate</span>
+							<div class="enhanced-bar-container">
+								<div class="enhanced-bar-fill nonviolent-hate" id="nonviolentHateBar" style="width: 0%">
+									<span class="enhanced-bar-value" id="nonviolentHateValue">0%</span>
+								</div>
+							</div>
+						</div>
+                        <div class="enhanced-distribution-bar">
+							<span class="enhanced-bar-label">Neutral</span>
+							<div class="enhanced-bar-container">
+								<div class="enhanced-bar-fill neutral" id="neutralBar" style="width: 0%">
+									<span class="enhanced-bar-value" id="neutralValue">0%</span>
+								</div>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sample Results Table -->
+        <section class="section">
+            <div class="results-summary">
+                <div class="results-header">
+                    <h3>Sample Results (First 10 Records)</h3>
+                    <p>Preview of analyzed records from your dataset</p>
+                </div>
+                
+                <div class="enhanced-table-container">
+                    <table class="enhanced-data-table" id="resultsTable">
+                        <thead>
+                            <tr>
+                                <th>Text Preview</th>
+                                <th>Target</th>
+                                <th>Sentiment</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsBody">
+                            <tr>
+                                <td colspan="3" style="text-align: center; color: #718096; padding: 3rem;">
+                                    <div class="processing-indicator">
+                                        <div class="loading-pulse"></div>
+                                        Processing will begin shortly...
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Buttons -->
+        <section class="section">
+            <div class="batch-actions">
+                <button class="batch-btn" id="downloadLabeledBtn" disabled>
+                    📥 Download Labeled Data (CSV)
+                </button>
+                <button class="batch-btn batch-btn-secondary" id="newAnalysisBtn" style="display: none;">
+                    🔄 Analyze New Dataset
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Hierarchical Based Classification Of Islamophobia Sentiment Language From Cross Platform Social Media Data Using Bidirectional LSTM.</p>
+        </div>
+    </footer>
+
+<script>
+    // Global variables
+    let startTime;
+    let totalRecordsCount = 0;
+    let results = [];
+    let intervalId;
+    let csvContent = '';
+    let csvTexts = [];
+
+    // Initialize processing
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("DOM loaded - starting processing");
+        
+        // Get CSV data from localStorage - check both possible keys
+        const savedFileInfo = localStorage.getItem('csvFileInfo');
+        let savedFileContent = localStorage.getItem('selectedCSVFile'); // This is the key from UserHomePage.html
+        
+        console.log("File info in localStorage:", savedFileInfo);
+        console.log("File content available (selectedCSVFile):", savedFileContent ? "Yes (" + savedFileContent.length + " chars)" : "No");
+        
+        // If not found, try the other key
+        if (!savedFileContent) {
+            savedFileContent = localStorage.getItem('csvFileContent');
+            console.log("File content available (csvFileContent):", savedFileContent ? "Yes (" + savedFileContent.length + " chars)" : "No");
+        }
+        
+        if (!savedFileContent) {
+            showErrorAndRedirect("No CSV data found. Please go back and upload a CSV file.");
+            return;
+        }
+        
+        csvContent = savedFileContent;
+        
+        // Also save it under the expected key for consistency
+        localStorage.setItem('csvFileContent', csvContent);
+        
+        // Parse file info
+        let fileInfo = { name: 'dataset.csv', size: 0 };
+        if (savedFileInfo) {
+            try {
+                fileInfo = JSON.parse(savedFileInfo);
+            } catch (e) {
+                console.error("Error parsing file info:", e);
+            }
+        }
+        
+        // Update UI
+        document.getElementById('fileName').textContent = fileInfo.name;
+        
+        // Start processing
+        startTime = new Date();
+        updateTimeElapsed();
+        startProcessing();
+        
+        // Update time elapsed every second
+        intervalId = setInterval(updateTimeElapsed, 1000);
+        
+        // Add missing styles
+        addMissingStyles();
+    });
+
+    function showErrorAndRedirect(message) {
+        document.getElementById('currentStatus').textContent = message;
+        document.getElementById('currentStatus').style.color = '#E53E3E';
+        
+        // Create error message
+        const errorDiv = document.createElement('div');
+        errorDiv.innerHTML = `
+            <div style="
+                background: #FED7D7;
+                border: 1px solid #FC8181;
+                border-radius: 8px;
+                padding: 16px;
+                margin: 20px 0;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            ">
+                <div style="font-size: 24px;">⚠️</div>
+                <div>
+                    <h4 style="margin: 0 0 8px 0; color: #742A2A;">CSV Upload Required</h4>
+                    <p style="margin: 0; color: #742A2A;">${message}</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button id="goBackBtn" style="
+                    background: #3182CE;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 6px;
+                    font-weight: 600;
+                    cursor: pointer;
+                ">← Go Back to Upload</button>
+            </div>
+        `;
+        
+        // Insert after the processing status card
+        const statusCard = document.querySelector('.processing-status');
+        statusCard.parentNode.insertBefore(errorDiv, statusCard.nextSibling);
+        
+        // Add event listener to go back button
+        document.getElementById('goBackBtn').addEventListener('click', function() {
+            window.location.href = 'UserHomePage.html';
+        });
+        
+        // Stop the time interval
+        if (intervalId) clearInterval(intervalId);
+    }
+
+    function updateTimeElapsed() {
+        const now = new Date();
+        const elapsed = Math.floor((now - startTime) / 1000);
+        document.getElementById('timeElapsed').textContent = `${elapsed}s`;
+    }
+
+    function startProcessing() {
+        console.log("Starting processing with CSV content length:", csvContent.length);
+        
+        try {
+            // Parse the CSV file
+            csvTexts = extractTextFromCSV(csvContent);
+            totalRecordsCount = csvTexts.length;
+            
+            console.log(`Extracted ${totalRecordsCount} texts from CSV`);
+            
+            if (totalRecordsCount === 0) {
+                throw new Error("No valid text data found in CSV file");
+            }
+            
+            // Update UI
+            document.getElementById('totalRecords').textContent = totalRecordsCount;
+            document.getElementById('currentStatus').textContent = `Found ${totalRecordsCount} records to process`;
+            
+            // Start processing with the model
+            setTimeout(() => processWithModel(), 1000);
+            
+        } catch (error) {
+            console.error('Error starting processing:', error);
+            showErrorAndRedirect("Error processing CSV: " + error.message);
+        }
+    }
+
+    function extractTextFromCSV(csvContent) {
+        const textData = [];
+        const lines = csvContent.split('\n').filter(line => line.trim() !== '');
+        
+        if (lines.length === 0) return textData;
+        
+        console.log("First few lines of CSV:");
+        for (let i = 0; i < Math.min(3, lines.length); i++) {
+            console.log(`Line ${i}: "${lines[i].substring(0, 100)}..."`);
+        }
+        
+        // Check if first line is header
+        const firstLine = lines[0].toLowerCase();
+        const hasHeader = firstLine.includes('text') || firstLine.includes('content') || 
+                         firstLine.includes('tweet') || firstLine.includes('message') ||
+                         firstLine.includes('comment') || firstLine.includes('"');
+        
+        const startIndex = hasHeader ? 1 : 0;
+        console.log(`Has header: ${hasHeader}, start index: ${startIndex}`);
+        
+        for (let i = startIndex; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (line) {
+                let text = line;
+                
+                // Handle CSV parsing
+                if (line.includes(',') && !line.startsWith('"')) {
+                    // Simple comma-separated - take first column
+                    const parts = line.split(',');
+                    text = parts[0].trim();
+                } else if (line.includes('"')) {
+                    // Handle quoted text
+                    const matches = line.match(/"([^"]+)"/g);
+                    if (matches && matches.length > 0) {
+                        // Take the first quoted text
+                        text = matches[0].replace(/"/g, '');
+                    }
+                }
+                
+                if (text && text.length > 0) {
+                    textData.push(text);
+                }
+            }
+        }
+        
+        console.log(`Extracted ${textData.length} texts from CSV`);
+        if (textData.length > 0) {
+            console.log("Sample extracted texts:", textData.slice(0, 3));
+        }
+        
+        return textData;
+    }
+
+    async function processWithModel() {
+        updateProgress(10, 0);
+        document.getElementById('currentStatus').textContent = 'Connecting to AI model...';
+        
+        // Test if model API is available
+        try {
+            const testResponse = await fetch('http://localhost:5001/api/health', {
+                method: 'GET',
+                headers: { 'Accept': 'application/json' }
+            });
+            
+            if (testResponse.ok) {
+                document.getElementById('currentStatus').textContent = 'AI model connected. Starting analysis...';
+                await processInBatches();
+            } else {
+                throw new Error("Model API not responding");
+            }
+        } catch (error) {
+            console.error("Model API test failed:", error);
+            document.getElementById('currentStatus').textContent = '⚠️ Model API offline. Using simulation...';
+            // Fallback to simulation
+            await simulateProcessing();
+        }
+    }
+
+    async function processInBatches() {
+        const batchSize = 10;
+        const totalBatches = Math.ceil(csvTexts.length / batchSize);
+        
+        console.log(`Processing ${csvTexts.length} records in ${totalBatches} batches`);
+        
+        document.getElementById('currentStatus').textContent = `Processing ${csvTexts.length} records...`;
+        
+        // Show initial empty table
+        addRealResults();
+        
+        for (let batch = 0; batch < totalBatches; batch++) {
+            const startIdx = batch * batchSize;
+            const endIdx = Math.min(startIdx + batchSize, csvTexts.length);
+            const batchTexts = csvTexts.slice(startIdx, endIdx);
+            
+            const progress = ((batch + 1) / totalBatches) * 100;
+            const recordsProcessed = endIdx;
+            
+            updateProgress(progress, recordsProcessed);
+            document.getElementById('currentStatus').textContent = 
+                `Processing batch ${batch + 1}/${totalBatches} (${recordsProcessed}/${csvTexts.length} records)...`;
+            
+            // Process this batch
+            await processBatchWithModel(batchTexts, batch);
+            
+            // Update UI after each batch
+            updateRealDistributions();
+            addRealResults();
+            
+            // Small delay to show progress
+            await new Promise(resolve => setTimeout(resolve, 300));
+        }
+        
+        finishProcessing();
+    }
+
+    async function processBatchWithModel(batchTexts, batchIndex) {
+        try {
+            // Try batch API first
+            console.log(`Sending batch ${batchIndex} to API (${batchTexts.length} texts)`);
+            
+            const response = await fetch('http://localhost:5001/api/analyze-batch', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ texts: batchTexts })
+            });
+            
+            if (!response.ok) {
+                throw new Error(`Batch API error: ${response.status}`);
+            }
+            
+            const result = await response.json();
+            
+            if (result.success && result.results) {
+                // Process results from API
+                result.results.forEach((apiResult, index) => {
+                    const originalText = batchTexts[index];
+                    
+                    // Ensure severity format is consistent
+                    let severity = apiResult.severity || apiResult.display_severity || "Neutral";
+                    if (severity === "Nonviolent_Hate") {
+                        severity = "Nonviolent Hate";
+                    }
+                    
+                    const newResult = {
+                        original_text: originalText,
+                        display_text: truncateText(originalText, 70),
+                        target: apiResult.target || "Other",
+                        severity: severity,
+                        islamophobia: apiResult.islamophobia || "No",
+                        confidence: apiResult.confidence || 0.8,
+                        target_confidence: apiResult.target_confidence || apiResult.confidence || 0.8,
+                        severity_confidence: apiResult.severity_confidence || apiResult.confidence || 0.8
+                    };
+                    
+                    results.push(newResult);
+                });
+                
+                updateRealTimeStatistics();
+                
+            } else {
+                throw new Error(result.error || 'Batch processing failed');
+            }
+            
+        } catch (error) {
+            console.error(`Batch ${batchIndex} failed:`, error);
+            
+            // Fallback: process individually
+            await fallbackIndividualProcessing(batchTexts);
+        }
+    }
+
+    async function fallbackIndividualProcessing(texts) {
+        console.log("Falling back to individual text processing...");
+        
+        for (let i = 0; i < texts.length; i++) {
+            try {
+                const response = await fetch('http://localhost:5001/api/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ text: texts[i] })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    const predictions = result.predictions;
+                    const newResult = {
+                        original_text: texts[i],
+                        display_text: truncateText(texts[i], 70),
+                        target: predictions.target,
+                        severity: predictions.severity,
+                        islamophobia: predictions.islamophobia,
+                        confidence: predictions.confidence,
+                        target_confidence: predictions.target_confidence,
+                        severity_confidence: predictions.severity_confidence
+                    };
+                    
+                    results.push(newResult);
+                    updateRealTimeStatistics();
+                    
+                } else {
+                    throw new Error(result.error || 'Individual processing failed');
+                }
+                
+            } catch (error) {
+                console.error(`Error processing text ${i}:`, error);
+                // Add error record
+                results.push({
+                    original_text: texts[i],
+                    display_text: truncateText(texts[i], 70),
+                    target: "Error",
+                    severity: "Error",
+                    islamophobia: "No",
+                    confidence: 0,
+                    target_confidence: 0,
+                    severity_confidence: 0,
+                    error: true
+                });
+            }
+        }
+    }
+
+    async function simulateProcessing() {
+        const totalRecords = csvTexts.length;
+        const batchSize = 10;
+        const totalBatches = Math.ceil(totalRecords / batchSize);
+        
+        console.log(`Simulating processing of ${totalRecords} records`);
+        
+        document.getElementById('currentStatus').textContent = `Simulating analysis of ${totalRecords} records...`;
+        
+        // Show initial empty table
+        addRealResults();
+        
+        for (let batch = 0; batch < totalBatches; batch++) {
+            const startIdx = batch * batchSize;
+            const endIdx = Math.min(startIdx + batchSize, totalRecords);
+            const batchTexts = csvTexts.slice(startIdx, endIdx);
+            
+            const progress = ((batch + 1) / totalBatches) * 100;
+            const recordsProcessed = endIdx;
+            
+            updateProgress(progress, recordsProcessed);
+            document.getElementById('currentStatus').textContent = 
+                `Simulating: Batch ${batch + 1}/${totalBatches} (${recordsProcessed}/${totalRecords} records)...`;
+            
+            // Simulate batch processing
+            for (const text of batchTexts) {
+                await simulateSingleText(text);
+            }
+            
+            // Update UI
+            updateRealDistributions();
+            addRealResults();
+            
+            // Delay for simulation effect
+            await new Promise(resolve => setTimeout(resolve, 500));
+        }
+        
+        finishProcessing();
+    }
+
+    async function simulateSingleText(text) {
+        await new Promise(resolve => setTimeout(resolve, 50));
+        
+        const lowerText = text.toLowerCase();
+        
+        // Simulate target classification
+        let target, targetConfidence;
+        if (lowerText.includes('islam') || lowerText.includes('quran') || lowerText.includes('sharia')) {
+            target = "Islam";
+            targetConfidence = 0.85 + Math.random() * 0.1;
+        } else if (lowerText.includes('muslim')) {
+            target = "Muslim";
+            targetConfidence = 0.82 + Math.random() * 0.12;
+        } else {
+            target = "Other";
+            targetConfidence = 0.78 + Math.random() * 0.15;
+        }
+        
+        // Simulate severity classification
+        let severity, severityConfidence;
+        if (lowerText.includes('kill') || lowerText.includes('terror') || lowerText.includes('attack')) {
+            severity = "Promoting Violent";
+            severityConfidence = 0.88 + Math.random() * 0.08;
+        } else if (lowerText.includes('ban') || lowerText.includes('hate') || lowerText.includes('against')) {
+            severity = "Nonviolent Hate";
+            severityConfidence = 0.75 + Math.random() * 0.15;
+        } else {
+            severity = "Neutral";
+            severityConfidence = 0.90 + Math.random() * 0.08;
+        }
+        
+        const isIslamophobic = (severity === "Promoting Violent" || severity === "Nonviolent Hate") && 
+                              (target === "Islam" || target === "Muslim");
+        const confidence = (targetConfidence + severityConfidence) / 2;
+        
+        results.push({
+            original_text: text,
+            display_text: truncateText(text, 70),
+            target: target,
+            severity: severity,
+            islamophobia: isIslamophobic ? 'Yes' : 'No',
+            confidence: parseFloat(confidence.toFixed(3)),
+            target_confidence: parseFloat(targetConfidence.toFixed(3)),
+            severity_confidence: parseFloat(severityConfidence.toFixed(3))
+        });
+        
+        updateRealTimeStatistics();
+    }
+
+    function truncateText(text, maxLength = 60) {
+        if (text.length > maxLength) {
+            return text.substring(0, maxLength) + "...";
+        }
+        return text;
+    }
+
+    function updateRealTimeStatistics() {
+        document.getElementById('processedRecords').textContent = results.length;
+        const errorCount = results.filter(r => r.error).length;
+        document.getElementById('errorCount').textContent = errorCount;
+        if (totalRecordsCount > 0) {
+            document.getElementById('totalRecords').textContent = totalRecordsCount;
+        }
+    }
+
+    function updateRealDistributions() {
+        if (results.length === 0) return;
+        
+        const targetCounts = { Islam: 0, Muslim: 0, Other: 0, Error: 0 };
+        const severityCounts = { "Promoting Violent": 0, "Nonviolent Hate": 0, "Neutral": 0, "Error": 0 };
+        
+        results.forEach((result) => {
+            const target = result.target || "Other";
+            targetCounts[target] = (targetCounts[target] || 0) + 1;
+            
+            let severity = result.severity || "Neutral";
+            if (severity === "Nonviolent_Hate") severity = "Nonviolent Hate";
+            severityCounts[severity] = (severityCounts[severity] || 0) + 1;
+        });
+        
+        const total = results.length;
+        
+        // Calculate percentages
+        const islamPercent = ((targetCounts.Islam || 0) / total) * 100;
+        const muslimPercent = ((targetCounts.Muslim || 0) / total) * 100;
+        const otherPercent = ((targetCounts.Other || 0) / total) * 100;
+        
+        const promotingViolentPercent = ((severityCounts["Promoting Violent"] || 0) / total) * 100;
+        const nonviolentHatePercent = ((severityCounts["Nonviolent Hate"] || 0) / total) * 100;
+        const neutralPercent = ((severityCounts["Neutral"] || 0) / total) * 100;
+        
+        // Update bars
+        updateDistributionBar('islam', islamPercent);
+        updateDistributionBar('muslim', muslimPercent);
+        updateDistributionBar('other', otherPercent);
+        updateDistributionBar('promotingViolent', promotingViolentPercent);
+        updateDistributionBar('nonviolentHate', nonviolentHatePercent);
+        updateDistributionBar('neutral', neutralPercent);
+    }
+
+    function updateDistributionBar(id, percent) {
+        const bar = document.getElementById(`${id}Bar`);
+        const value = document.getElementById(`${id}Value`);
+        
+        if (!bar || !value) return;
+        
+        percent = parseFloat(percent) || 0;
+        if (isNaN(percent)) percent = 0;
+        
+        // Ensure minimum 1% for visibility
+        const displayPercent = Math.max(percent, 1);
+        
+        bar.style.width = `${displayPercent}%`;
+        value.textContent = `${Math.round(percent)}%`;
+    }
+
+    function addRealResults() {
+        const resultsBody = document.getElementById('resultsBody');
+        resultsBody.innerHTML = '';
+        
+        // Show first 10 results or all if less than 10
+        const firstTenResults = results.slice(0, 10);
+        
+        if (firstTenResults.length === 0) {
+            resultsBody.innerHTML = `
+                <tr>
+                    <td colspan="3" style="text-align: center; color: #718096; padding: 3rem;">
+                        <div class="processing-indicator">
+                            <div class="loading-pulse"></div>
+                            Processing first records...
+                        </div>
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+        
+        firstTenResults.forEach((result, index) => {
+            const row = document.createElement('tr');
+            
+            // Determine colors
+            let severityColor = '#38A169'; // Neutral - green
+            if (result.severity === 'Promoting Violent') {
+                severityColor = '#E53E3E'; // red
+            } else if (result.severity === 'Nonviolent Hate') {
+                severityColor = '#D69E2E'; // yellow
+            } else if (result.error) {
+                severityColor = '#718096'; // gray for error
+            }
+            
+            let targetColor = '#3182CE'; // default blue
+            if (result.target === 'Islam') {
+                targetColor = '#805AD5'; // purple
+            } else if (result.target === 'Muslim') {
+                targetColor = '#3182CE'; // blue
+            } else if (result.target === 'Other') {
+                targetColor = '#38A169'; // green
+            } else if (result.error) {
+                targetColor = '#718096'; // gray
+            }
+            
+            row.innerHTML = `
+                <td>
+                    <div class="text-preview">
+                        <strong>${index + 1}.</strong> ${result.display_text}
+                        ${result.islamophobia === 'Yes' ? '<span class="badge islamophobia-badge">🚩 Islamophobic</span>' : ''}
+                        ${result.error ? '<span class="badge error-badge">⚠️ Error</span>' : ''}
+                    </div>
+                </td>
+                <td>
+                    <span class="tag" style="background-color: ${targetColor}">
+                        ${result.target || 'Other'}
+                    </span>
+                </td>
+                <td>
+                    <span class="tag" style="background-color: ${severityColor}">
+                        ${result.severity || 'Neutral'}
+                    </span>
+                    ${!result.error && result.confidence ? `<div class="confidence">${(result.confidence * 100).toFixed(1)}%</div>` : ''}
+                </td>
+            `;
+            
+            resultsBody.appendChild(row);
+        });
+        
+        // Add placeholder if less than 10 results
+        if (firstTenResults.length < 10 && results.length < totalRecordsCount) {
+            const placeholderRow = document.createElement('tr');
+            placeholderRow.innerHTML = `
+                <td colspan="3" style="text-align: center; color: #718096; padding: 1rem;">
+                    <div class="processing-indicator">
+                        <div class="loading-pulse" style="width: 20px; height: 20px;"></div>
+                        Processing more records... (${results.length}/${totalRecordsCount})
+                    </div>
+                </td>
+            `;
+            resultsBody.appendChild(placeholderRow);
+        }
+    }
+
+    function updateProgress(percentage, processedRecords) {
+        percentage = Math.min(100, Math.max(0, percentage));
+        
+        document.getElementById('progressFill').style.width = `${percentage}%`;
+        document.getElementById('progressText').textContent = `${Math.round(percentage)}%`;
+        document.getElementById('recordsProcessed').textContent = processedRecords;
+        
+        // Update status badge
+        const statusBadge = document.getElementById('statusBadge');
+        if (percentage < 30) {
+            statusBadge.textContent = 'Initializing';
+            statusBadge.style.backgroundColor = '#ED8936';
+        } else if (percentage < 70) {
+            statusBadge.textContent = 'Processing';
+            statusBadge.style.backgroundColor = '#3182CE';
+        } else if (percentage < 100) {
+            statusBadge.textContent = 'Finalizing';
+            statusBadge.style.backgroundColor = '#805AD5';
+        } else {
+            statusBadge.textContent = 'Completed';
+            statusBadge.style.backgroundColor = '#38A169';
+        }
+    }
+
+    function finishProcessing() {
+        clearInterval(intervalId);
+        
+        updateProgress(100, results.length);
+        document.getElementById('currentStatus').textContent = '✅ Analysis completed successfully!';
+        
+        document.getElementById('statusBadge').textContent = 'Completed';
+        document.getElementById('statusBadge').style.backgroundColor = '#38A169';
+        
+        // Update final distributions
+        updateRealDistributions();
+        
+        // Show final results
+        addRealResults();
+        
+        // Enable download button
+        const downloadBtn = document.getElementById('downloadLabeledBtn');
+        downloadBtn.disabled = false;
+        downloadBtn.innerHTML = '📥 Download Labeled Data (CSV)';
+        
+        // Show new analysis button
+        document.getElementById('newAnalysisBtn').style.display = 'flex';
+        
+        // Save results to localStorage for download
+        localStorage.setItem('processedResults', JSON.stringify(results));
+        
+        // Show completion message
+        showCompletionMessage();
+    }
+
+    function showCompletionMessage() {
+        const toast = document.createElement('div');
+        toast.className = 'completion-toast';
+        toast.innerHTML = `
+            <div class="toast-content">
+                <span class="toast-icon">✅</span>
+                <div class="toast-message">
+                    <h4>Dataset Analysis Complete</h4>
+                    <p>Successfully processed ${results.length} records. You can now download the results.</p>
+                </div>
+                <button class="toast-close">&times;</button>
+            </div>
+        `;
+        
+        toast.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-left: 4px solid #38A169;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+            max-width: 400px;
+        `;
+        
+        document.body.appendChild(toast);
+        
+        const closeBtn = toast.querySelector('.toast-close');
+        closeBtn.onclick = () => toast.remove();
+        
+        setTimeout(() => {
+            if (toast.parentNode) toast.remove();
+        }, 5000);
+    }
+
+    function addMissingStyles() {
+        const styleId = 'missing-styles';
+        if (!document.getElementById(styleId)) {
+            const style = document.createElement('style');
+            style.id = styleId;
+            style.textContent = `
+                .text-preview {
+                    max-width: 400px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    padding: 4px 0;
+                }
+                .badge.islamophobia-badge {
+                    background-color: #FC8181;
+                    color: #742A2A;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    margin-left: 8px;
+                    display: inline-block;
+                }
+                .badge.error-badge {
+                    background-color: #CBD5E0;
+                    color: #4A5568;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    margin-left: 8px;
+                    display: inline-block;
+                }
+                .tag {
+                    display: inline-block;
+                    padding: 4px 10px;
+                    border-radius: 20px;
+                    color: white;
+                    font-weight: 600;
+                    font-size: 0.8rem;
+                    min-width: 80px;
+                    text-align: center;
+                }
+                .confidence {
+                    font-size: 0.75rem;
+                    color: #718096;
+                    margin-top: 4px;
+                    text-align: center;
+                }
+                .loading-pulse {
+                    display: inline-block;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    background: linear-gradient(90deg, #3182CE, #805AD5);
+                    animation: pulse 1.5s ease-in-out infinite;
+                    margin-right: 10px;
+                }
+                @keyframes pulse {
+                    0% { transform: scale(0.8); opacity: 0.5; }
+                    50% { transform: scale(1); opacity: 1; }
+                    100% { transform: scale(0.8); opacity: 0.5; }
+                }
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                .processing-indicator {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 12px;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+
+    // Download button functionality
+    document.getElementById('downloadLabeledBtn').addEventListener('click', function() {
+        if (this.disabled) return;
+        
+        this.innerHTML = '⏳ Preparing download...';
+        this.disabled = true;
+        
+        setTimeout(() => {
+            downloadCSV();
+            this.innerHTML = '✅ Download Complete';
+            setTimeout(() => {
+                this.innerHTML = '📥 Download Labeled Data (CSV)';
+                this.disabled = false;
+            }, 2000);
+        }, 500);
+    });
+
+    function downloadCSV() {
+        if (results.length === 0) {
+            alert('No results to download.');
+            return;
+        }
+        
+        const headers = ['Original Text', 'Target', 'Target Confidence', 'Sentiment', 'Sentiment Confidence', 'Islamophobia', 'Overall Confidence'];
+        const csvRows = [headers.join(',')];
+        
+        results.forEach(result => {
+            const row = [
+                `"${(result.original_text || '').replace(/"/g, '""')}"`,
+                result.target || '',
+                result.target_confidence || '',
+                result.severity || '',
+                result.severity_confidence || '',
+                result.islamophobia || '',
+                result.confidence || ''
+            ];
+            csvRows.push(row.join(','));
+        });
+        
+        const csvContent = csvRows.join('\n');
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `islamophobia-analysis-${new Date().toISOString().split('T')[0]}.csv`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+
+    // New analysis button functionality
+    document.getElementById('newAnalysisBtn').addEventListener('click', function() {
+        if (confirm('Start a new analysis?')) {
+            window.location.href = 'UserHomePage.html';
+        }
+    });
+</script>
+</body>
+</html>

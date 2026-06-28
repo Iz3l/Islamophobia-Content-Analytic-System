@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading - Islamophobia Content Analytic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4a5568 100%);
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            color: white;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            animation: slideUpFade 1.2s ease-out 0.3s forwards;
+        }
+
+        /* Animated Background Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: floatElement 8s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) { width: 100px; height: 100px; top: 15%; left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { width: 150px; height: 150px; top: 70%; left: 85%; animation-delay: 2s; }
+        .floating-element:nth-child(3) { width: 80px; height: 80px; top: 25%; left: 80%; animation-delay: 4s; }
+        .floating-element:nth-child(4) { width: 120px; height: 120px; top: 75%; left: 15%; animation-delay: 6s; }
+
+        /* Enhanced Mosque Silhouette */
+        .mosque-silhouette {
+            width: 220px;
+            height: 160px;
+            position: relative;
+            margin-bottom: 40px;
+            filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.4));
+            opacity: 0;
+            animation: fadeInScale 1.5s ease-out 0.8s forwards;
+        }
+
+        .mosque-dome {
+            width: 140px;
+            height: 90px;
+            background: linear-gradient(135deg, #ffffff, #e2e8f0, #cbd5e0);
+            border-radius: 70px 70px 0 0;
+            margin: 0 auto;
+            position: relative;
+            animation: domeGlow 4s ease-in-out infinite, domeFloat 6s ease-in-out infinite;
+        }
+
+        .mosque-minarets {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            width: 100%;
+            top: 0;
+        }
+
+        .minaret {
+            width: 22px;
+            height: 110px;
+            background: linear-gradient(135deg, #ffffff, #e2e8f0);
+            border-radius: 11px 11px 0 0;
+            animation: minaretGlow 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .minaret::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: minaretShine 3s ease-in-out infinite;
+        }
+
+        .minaret:nth-child(1) { animation-delay: 0s; }
+        .minaret:nth-child(2) { animation-delay: 1.5s; }
+
+        /* Enhanced Crescent Moon */
+        .crescent-moon {
+            position: absolute;
+            top: 12%;
+            right: 10%;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 25px 30px, #ffffff, transparent),
+                       radial-gradient(circle at 40px 30px, #667eea, transparent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: moonOrbit 15s linear infinite, fadeIn 1s ease-out 1s forwards;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+        }
+
+        /* Enhanced Stars */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+            opacity: 0;
+        }
+
+        .star:nth-child(1) { top: 20%; left: 15%; animation-delay: 0.2s; width: 3px; height: 3px; }
+        .star:nth-child(2) { top: 65%; left: 85%; animation-delay: 0.8s; width: 4px; height: 4px; }
+        .star:nth-child(3) { top: 45%; left: 25%; animation-delay: 1.4s; width: 2px; height: 2px; }
+        .star:nth-child(4) { top: 80%; left: 55%; animation-delay: 2s; width: 3px; height: 3px; }
+        .star:nth-child(5) { top: 35%; left: 75%; animation-delay: 2.6s; width: 4px; height: 4px; }
+        .star:nth-child(6) { top: 60%; left: 35%; animation-delay: 3.2s; width: 2px; height: 2px; }
+
+        /* Enhanced Main Title */
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #ffffff, #e2e8f0, #48bb78, #667eea);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out 1s forwards, titleShimmer 6s ease-in-out infinite;
+            line-height: 1.1;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #e2e8f0;
+            margin-bottom: 40px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out 1.2s forwards;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Enhanced Progress Bar */
+        .progress-container {
+            width: 450px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            margin: 30px 0;
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.4s forwards;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #48bb78, #38a169, #2f855a);
+            border-radius: 4px;
+            width: 0%;
+            animation: progressLoad 5s ease-in-out forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            animation: progressShine 2s ease-in-out infinite;
+        }
+
+        .progress-text {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            margin-top: 20px;
+            font-weight: 600;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s forwards;
+            min-height: 1.5em;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Enhanced Loading Dots */
+        .loading-dots {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.3s forwards;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #48bb78;
+            border-radius: 50%;
+            margin: 0 8px;
+            animation: dotPulse 1.8s infinite;
+            position: relative;
+            box-shadow: 0 0 15px rgba(72, 187, 120, 0.4);
+        }
+
+        .dot:nth-child(1) { animation-delay: 0s; }
+        .dot:nth-child(2) { animation-delay: 0.3s; }
+        .dot:nth-child(3) { animation-delay: 0.6s; }
+
+        /* Enhanced Mission Statement */
+        .mission-statement {
+            max-width: 650px;
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out 1.6s forwards;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .mission-title {
+            font-size: 1.2rem;
+            color: #48bb78;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(72, 187, 120, 0.3);
+        }
+
+        .mission-text {
+            font-size: 1rem;
+            color: #e2e8f0;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* System Stats */
+        .system-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 25px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.7s forwards;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #48bb78;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #cbd5e0;
+            opacity: 0.8;
+        }
+
+        /* Enhanced Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUpFade {
+            from { 
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from { 
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes floatElement {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: translateY(-30px) rotate(180deg) scale(1.1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes domeGlow {
+            0%, 100% { 
+                box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 60px rgba(255, 255, 255, 0.7);
+                transform: scale(1.03);
+            }
+        }
+
+        @keyframes domeFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes minaretGlow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+                transform: scaleY(1);
+            }
+            50% { 
+                box-shadow: 0 0 35px rgba(255, 255, 255, 0.6);
+                transform: scaleY(1.08);
+            }
+        }
+
+        @keyframes minaretShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes moonOrbit {
+            0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { 
+                opacity: 0.2;
+                transform: scale(0.7);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes titleShimmer {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+
+        @keyframes progressLoad {
+            0% { width: 0%; }
+            25% { width: 35%; }
+            50% { width: 65%; }
+            75% { width: 85%; }
+            100% { width: 100%; }
+        }
+
+        @keyframes progressShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { 
+                transform: scale(0.8);
+                opacity: 0.5;
+                box-shadow: 0 0 10px rgba(72, 187, 120, 0.3);
+            }
+            50% { 
+                transform: scale(1.2);
+                opacity: 1;
+                box-shadow: 0 0 25px rgba(72, 187, 120, 0.7);
+            }
+        }
+
+        /* Final Fade Out */
+        .fade-out {
+            animation: fadeOutToMain 1.2s ease-in-out forwards !important;
+        }
+
+        @keyframes fadeOutToMain {
+            from { 
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            to { 
+                opacity: 0;
+                transform: translateY(-40px) scale(0.95);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title { font-size: 2.6rem; }
+            .subtitle { font-size: 1.2rem; }
+            .progress-container { width: 350px; }
+            .mosque-silhouette { transform: scale(0.85); }
+            .mission-statement { margin: 20px; padding: 25px; }
+            .system-stats { gap: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .main-title { font-size: 2.2rem; }
+            .subtitle { font-size: 1rem; }
+            .progress-container { width: 280px; }
+            .mosque-silhouette { transform: scale(0.75); }
+            .mission-statement { padding: 20px; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="loading-container" id="loadingContainer">
+        <!-- Floating Background Elements -->
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        
+        <!-- Crescent Moon -->
+        <div class="crescent-moon"></div>
+        
+        <!-- Stars -->
+        <div class="stars">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+
+        <!-- Mosque Silhouette -->
+        <div class="mosque-silhouette">
+            <div class="mosque-minarets">
+                <div class="minaret"></div>
+                <div class="minaret"></div>
+            </div>
+            <div class="mosque-dome"></div>
+        </div>
+
+        <!-- Main Content -->
+        <h1 class="main-title">ISLAMOPHOBIA DETECTION</h1>
+        <p class="subtitle">ADVANCED HIERARCHICAL AI ANALYSIS</p>
+
+        <!-- Loading Dots -->
+        <div class="loading-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <div class="progress-text" id="progressText">🚀 Initializing AI Systems...</div>
+
+        <!-- System Stats -->
+        <div class="system-stats">
+            <div class="stat">
+                <div class="stat-value" id="statModel">BiLSTM</div>
+                <div class="stat-label">AI Model</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="statAccuracy">98.2%</div>
+                <div class="stat-label">Accuracy</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="statPlatforms">3</div>
+                <div class="stat-label">Platforms</div>
+            </div>
+        </div>
+
+        <!-- Mission Statement -->
+        <div class="mission-statement">
+            <div class="mission-title">NEURAL NETWORK INTELLIGENCE PLATFORM</div>
+            <div class="mission-text">
+                Leveraging Hierarchical Bidirectional LSTM architectures with multi-platform integration 
+                to detect and classify Islamophobic content in real-time. Empowering digital safety through 
+                cutting-edge artificial intelligence and machine learning technologies.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dynamic progress messages
+        const messages = [
+            { text: "🚀 Initializing AI Systems...", delay: 0 },
+            { text: "🧠 Loading Hierarchical BiLSTM...", delay: 800 },
+            { text: "📊 Processing Neural Networks...", delay: 1600 },
+            { text: "⚡ Optimizing Classification Engine...", delay: 2400 },
+            { text: "🔍 Calibrating Detection Algorithms...", delay: 3200 },
+            { text: "✅ System Ready - Launching Platform...", delay: 4000 }
+        ];
+
+        const progressText = document.getElementById('progressText');
+        const loadingContainer = document.getElementById('loadingContainer');
+        const statModel = document.getElementById('statModel');
+        const statAccuracy = document.getElementById('statAccuracy');
+        const statPlatforms = document.getElementById('statPlatforms');
+
+        // Animate progress messages
+        function updateProgress() {
+            messages.forEach((message, index) => {
+                setTimeout(() => {
+                    progressText.style.opacity = '0';
+                    setTimeout(() => {
+                        progressText.textContent = message.text;
+                        progressText.style.opacity = '1';
+                        progressText.style.transition = 'opacity 0.4s ease';
+                    }, 200);
+                }, message.delay);
+            });
+        }
+
+        // Animate stats
+        function animateStats() {
+            // Model type animation
+            setTimeout(() => {
+                statModel.style.transform = 'scale(1.2)';
+                setTimeout(() => statModel.style.transform = 'scale(1)', 300);
+            }, 1500);
+
+            // Accuracy count-up
+            let accuracy = 0;
+            const accuracyInterval = setInterval(() => {
+                accuracy += 0.2;
+                statAccuracy.textContent = accuracy.toFixed(1) + '%';
+                if (accuracy >= 98.2) {
+                    clearInterval(accuracyInterval);
+                    statAccuracy.textContent = '98.2%';
+                }
+            }, 30);
+
+            // Platforms count-up
+            let platforms = 0;
+            const platformInterval = setInterval(() => {
+                platforms++;
+                statPlatforms.textContent = platforms;
+                if (platforms >= 3) {
+                    clearInterval(platformInterval);
+                }
+            }, 500);
+        }
+
+        // Start animations
+        setTimeout(updateProgress, 500);
+        setTimeout(animateStats, 1000);
+
+        // Final fade out and redirect
+        setTimeout(() => {
+            loadingContainer.classList.add('fade-out');
+            
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1200);
+            
+        }, 5000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiLSTM-CBOW-Batch64 - Model Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Islamophobia Detection System</h1>
+                <span class="subtitle">Model 1: BiLSTM-CBOW-Batch64 🥇</span>
+            </div>
+            <nav class="nav-links">
+                <a href="AdminHomePage.html" class="nav-link">← Back to Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <div class="section-header">
+                <h2>Model Parameters & Results</h2>
+                <p>Best performing model configuration</p>
+            </div>
+            
+            <div class="model-details-grid">
+                <div class="parameters-card">
+                    <h3>Model Parameters</h3>
+                    <div class="param-grid">
+                        <div class="param-item">
+                            <span class="param-label">Architecture:</span>
+                            <span class="param-value">Bidirectional LSTM</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Embedding:</span>
+                            <span class="param-value">Word2Vec CBOW</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Hidden Dimensions:</span>
+                            <span class="param-value">256</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Batch Size:</span>
+                            <span class="param-value">64</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Layers:</span>
+                            <span class="param-value">2</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Learning Rate:</span>
+                            <span class="param-value">0.001</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Epochs:</span>
+                            <span class="param-value">20</span>
+                        </div>
+                        <div class="param-item">
+                            <span class="param-label">Dropout:</span>
+                            <span class="param-value">0.3</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="results-card">
+                    <h3>Performance Results</h3>
+                    <div class="results-grid">
+                        <div class="result-metric">
+                            <span class="metric-label">F1-Score</span>
+                            <span class="metric-value">0.815</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-label">Accuracy</span>
+                            <span class="metric-value">0.902</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-label">Precision</span>
+                            <span class="metric-value">0.857</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-label">Recall</span>
+                            <span class="metric-value">0.799</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-label">Training Time</span>
+                            <span class="metric-value">~90 min</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-label">Parameters</span>
+                            <span class="metric-value">2.1M</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Model Performance Analysis</h2>
+                <p>Detailed results and visualizations for Model 1</p>
+            </div>
+            
+            <div class="results-grid">
+                <div class="result-frame">
+                    <h4>Classification Results</h4>
+                    <div class="frame-content">
+                        <div class="image-placeholder">
+							<img src="images/dataset/Model1CR.jpg" alt="ModelClasificationResult" class="wordcloud-image">
+                        </div>
+                        <p>Detailed classification performance across all categories</p>
+                        <div class="performance-stats">
+                            <div class="perf-stat">
+                                <span>Accuracy: 0.902</span>
+                                <span>F1 Score: 0.0.815</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="result-frame">
+                    <h4>Confusion Matrix</h4>
+                    <div class="frame-content">
+                        <div class="image-placeholder">
+							<img src="images/dataset/Model1CM.jpg" alt="ModelConfusionMatrix" class="wordcloud-image">
+                        </div>
+                        <p>Model prediction vs actual classification results</p>
+                    </div>
+                </div>
+                
+                <div class="result-frame">
+                    <h4>Loss Function</h4>
+                    <div class="frame-content">
+                        <div class="image-placeholder">
+							<img src="images/dataset/Model1LF.jpg" alt="ModelLossFunction" class="wordcloud-image">
+                        </div>
+                        <p>Training and validation loss over epochs</p>
+                        <div class="loss-stats">
+                        </div>
+                    </div>
+                </div>
+                
+				<div class="result-frame">
+					<h4>Misclassification Analysis</h4>
+					<div class="frame-content">
+						<div class="image-placeholder">
+							<img src="images/model/Model1MisclassificationRate.png" alt="Model Misclasification Rate" class="wordcloud-image">
+						</div>
+						<p>Analysis of incorrect predictions and patterns</p>
+						<div class="misclass-stats">
+							<!-- Explain Model1MisclassificationRate.png here-->
+						</div>
+					</div>
+						
+					<div class="frame-content">
+						<div class="image-placeholder">
+							<img src="images/model/Model1MisclassificationK1Patern.png" alt="Model Misclasification K1 Patern" class="wordcloud-image">
+						</div>
+						<p>Analysis of incorrect predictions and patterns</p>
+						<div class="misclass-stats">
+							<!-- Explain Model1MisclassificationK1Patern.png here-->
+						</div>
+					</div>
+					
+						
+					<div class="frame-content">
+						<div class="image-placeholder">
+							<img src="images/model/Model1MisclassificationK2Patern.png" alt="Model Misclasification Rate" class="wordcloud-image">
+						</div>
+						<p>Analysis of incorrect predictions and patterns</p>
+						<div class="misclass-stats">
+							<!-- Explain Model1MisclassificationK2Patern.png here-->
+						</div>
+					</div>
+						
+					<div class="frame-content">
+						<div class="image-placeholder">
+							<img src="images/model/Model1MisclassificationBreakdown.png" alt="Model Misclasification Rate" class="wordcloud-image">
+						</div>
+						<p>Analysis of incorrect predictions and patterns</p>
+						<div class="misclass-stats">
+							<!-- Explain Model1MisclassificationBreakdown.png here-->
+						</div>
+					</div>
+						
+				</div>
+			</div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Hierarchical Based Classification Of Islamophobia Sentiment Language From Cross Platform Social Media Data Using Bidirectional LSTM.</p>
+        </div>
+    </footer>
+</body>
+</html>

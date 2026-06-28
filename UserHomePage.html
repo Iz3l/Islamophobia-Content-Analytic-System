@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Islamophobia Analytic System</title>
+	<link rel="icon" type="image/x-icon" href="images/islam2.ico">
+    <link rel="stylesheet" href="style1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Islamophobia Detection System</h1>
+                <span class="subtitle">User Dashboard</span>
+            </div>
+            <nav class="nav-links">
+				<a href="loadingScreen2.html" class="nav-link">← Model</a>
+                <a href="loadingScreen3.html" class="nav-link">← Back to Main Menu</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <section class="section">
+            <div class="section-header">
+                <div class="platform-logo">
+                    <img src="images/islamophobia-logo.png" alt="islamophobia" class="logo-image">
+                </div>
+            </div>
+        </section>
+    
+        <!-- Islamophobia Explanation -->
+        <section class="section">
+            <div class="content-card">
+                <h3>What is Islamophobia?</h3>
+                <p>Islamophobia refers to fear, prejudice, and hatred towards Muslims and the Islamic religion, leading to discrimination, exclusion, and violence.</p>
+                
+                <h4>Common Examples:</h4>
+                <ul class="example-list">
+                    <li>Stereotyping all Muslims as terrorists or extremists</li>
+                    <li>Discrimination in employment, education, or housing</li>
+                    <li>Verbal harassment and hate speech online</li>
+                    <li>Physical attacks on mosques or individuals</li>
+                    <li>Media portrayal linking Islam with violence</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Upload Sections -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Content Analysis</h2>
+                <p>Upload content for Islamophobia detection</p>
+            </div>
+            
+            <div class="upload-grid">
+                <div class="upload-card">
+                    <div class="platform-logo">
+                        <img src="images/upload-logo.png" alt="upload" class="platform-img">
+                    </div>
+                    <h3>Upload Dataset</h3>
+                    <p>Process multiple texts in batch mode</p>
+                    <div class="upload-area">
+                        <p>Drag & drop CSV file or click to browse</p>
+                        <input type="file" id="datasetFile" accept=".csv" style="display: none;">
+                        <button class="upload-btn" onclick="document.getElementById('datasetFile').click()">Select File</button>
+                    </div>
+                </div>
+                
+                <div class="upload-card">
+                    <div class="platform-logo">
+                        <img src="images/singletextanalysis-logo.png" alt="upload" class="platform-img">
+                    </div>
+                    <h3>Single Text Analysis</h3>
+                    <p>Analyze individual text content</p>
+                    <div class="text-input-area">
+                        <textarea id="textInput" placeholder="Enter text to analyze for Islamophobic content..." rows="6"></textarea>
+                        <button class="analyze-btn" id="analyzeBtn">Analyze Text</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Islamophobia Content Analytic Based On Deep Learning Approach For Hierachical Classification Cross Platform Social Media Data</p>
+        </div>
+    </footer>
+
+    <script>
+		// Update the file input handler
+		document.getElementById('datasetFile').addEventListener('change', function(e) {
+			const file = e.target.files[0];
+			if (file) {
+				if (file.type === 'text/csv' || file.name.endsWith('.csv')) {
+					// Store file info
+					const fileInfo = {
+						name: file.name,
+						size: file.size,
+						type: file.type,
+						lastModified: file.lastModified
+					};
+					localStorage.setItem('csvFileInfo', JSON.stringify(fileInfo));
+					
+					// Read and store the file content for processing
+					const reader = new FileReader();
+					reader.onload = function(e) {
+						localStorage.setItem('selectedCSVFile', e.target.result);
+						window.location.href = 'uploaddatasetprocess.html';
+					};
+					reader.readAsText(file);
+				} else {
+					alert('Please select a valid CSV file.');
+					this.value = ''; // Reset file input
+				}
+			}
+		});
+
+        // Single text analysis handling
+        document.getElementById('analyzeBtn').addEventListener('click', function() {
+            const textInput = document.getElementById('textInput').value.trim();
+            
+            if (textInput === '') {
+                alert('Please enter some text to analyze.');
+                return;
+            }
+            
+            // Store the text in localStorage to pass to the analysis page
+            localStorage.setItem('textToAnalyze', textInput);
+            
+            // Redirect to the analysis page
+            window.location.href = 'singletextanalysisprocess.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Islamophobia Detection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Islamophobia Detection System</h1>
+                <span class="subtitle">Administrator Dashboard</span>
+            </div>
+            <nav class="nav-links">
+                <a href="loadingScreen1.html" class="nav-link">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Islamophobia Explanation -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Islamophobia Overview</h2>
+                <p>Administrative perspective on detection and analysis</p>
+            </div>
+            
+            <div class="content-card">
+                <h3>Understanding Islamophobia</h3>
+                <p>Islamophobia manifests as fear, prejudice, and hatred towards Muslims and Islam, often expressed through discrimination, stereotyping, and hate speech across various platforms.</p>
+                
+                <h4>Platform-Specific Manifestations:</h4>
+                <ul class="example-list">
+                    <li><strong>Reddit:</strong> Subreddit discussions, comment threads</li>
+                    <li><strong>X (Twitter):</strong> Tweets, replies, hashtags</li>
+                    <li><strong>YouTube:</strong> Video comments, video content descriptions</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Data Collection Section -->
+        <div class="platform-grid">
+			<a href="RedditInformationPage.html" class="platform-card">
+				<div class="platform-logo">
+					<img src="images/reddit-logo.png" alt="Reddit" class="platform-img">
+				</div>
+				<h3>Reddit Data</h3>
+				<p>Access Reddit dataset statistics and analysis</p>
+			</a>
+			
+			<a href="XInformationPage.html" class="platform-card">
+				<div class="platform-logo">
+					<img src="images/x-logo.png" alt="X (Twitter)" class="platform-img">
+				</div>
+				<h3>X (Twitter) Data</h3>
+				<p>Access Twitter dataset statistics and analysis</p>
+			</a>
+			
+			<a href="YoutubeInformationPage.html" class="platform-card">
+				<div class="platform-logo">
+					<img src="images/youtube-logo.png" alt="YouTube" class="platform-img">
+				</div>
+				<h3>YouTube Data</h3>
+				<p>Access YouTube dataset statistics and analysis</p>
+			</a>
+			
+			<a href="CombinedInfomationPage.html" class="platform-card">
+				<div class="platform-logo">
+					<img src="images/combined-logo.png" alt="Reddit" class="platform-img">
+				</div>
+				<h3>Combined Data</h3>
+				<p>Access Combined dataset statistics and analysis</p>
+			</a>
+		</div>
+
+        <!-- In AdminHomePage.html - Update Top 3 Models section -->
+		<section class="section">
+			<div class="section-header">
+				<h2>Top 3 Model Performances</h2>
+				<p>Click on any model to view detailed analysis</p>
+			</div>
+			
+			<div class="configurations-grid">
+				<!-- Gold - 1st Place -->
+				<a href="Model1V2.html" class="config-card gold">
+					<div class="rank-badge">🥇 1st</div>
+					<h3>BiLSTM-CBOW-Batch64</h3>
+					<div class="config-stats">
+						<div class="config-stat">
+							<span class="stat-name">F1-Score:</span>
+							<span class="stat-value">0.785</span>
+						</div>
+						<div class="config-stat">
+							<span class="stat-name">Accuracy:</span>
+							<span class="stat-value">0.889</span>
+						</div>
+						<div class="config-stat">
+							<span class="stat-name">Precision:</span>
+							<span class="stat-value">0.797</span>
+						</div>
+						<div class="config-stat">
+							<span class="stat-name">Recall:</span>
+							<span class="stat-value">0.780</span>
+						</div>
+					</div>
+					<div class="config-details">
+						<h4>Configuration Details:</h4>
+						<ul>
+							<li><strong>Architecture:</strong> Bidirectional LSTM</li>
+							<li><strong>Embedding:</strong> Word2Vec CBOW</li>
+							<li><strong>Hidden Dim:</strong> 256</li>
+							<li><strong>Batch Size:</strong> 64</li>
+							<li><strong>Layers:</strong> 2</li>
+						</ul>
+					</div>
+				</a>
+
+				<!-- Silver - 2nd Place -->
+				<a href="Model2.html" class="config-card silver">
+					<div class="rank-badge">🥈 2nd</div>
+					<h3>BiLSTM-CBOW-Batch32</h3>
+					<div class="config-stats">
+						<div class="config-stat">
+							<span class="stat-name">F1-Score:</span>
+							<span class="stat-value">0.781</span>
+						</div>
+						<div class="config-stat">
+							<span class="stat-name">Accuracy:</span>
+							<span class="stat-value">0.879</span>
+						</div>
+						<div class="config-stat">
+							<span class="stat-name">Precision:</span>
+							<span class="stat-value">0.782</span>
+						</div>
+						<div class="config-stat">
+							<span class="stat-name">Recall:</span>
+							<span class="stat-value">0.789</span>
+						</div>
+					</div>
+					<div class="config-details">
+						<h4>Configuration Details:</h4>
+						<ul>
+							<li><strong>Architecture:</strong> Bidirectional LSTM</li>
+							<li><strong>Embedding:</strong> Word2Vec CBOW</li>
+							<li><strong>Hidden Dim:</strong> 256</li>
+							<li><strong>Batch Size:</strong> 32</li>
+							<li><strong>Layers:</strong> 2</li>
+						</ul>
+					</div>
+				</a>
+
+				<!-- Bronze - 3rd Place -->
+				<a href="Model3.html" class="config-card bronze">
+					<div class="rank-badge">🥉 3rd</div>
+					<h3>BiLSTM-Skipgram-Batch32</h3>
+					<div class="config-stats">
+						<div class="config-stat">
+							<span class="stat-name">F1-Score:</span>
+							<span class="stat-value">0.678</span>
+						</div>
+						<div class="config-stat">
+							<span class="stat-name">Accuracy:</span>
+							<span class="stat-value">0.810</span>
+						</div>
+						<div class="config-stat">
+							<span class="stat-name">Precision:</span>
+							<span class="stat-value">0.680</span>
+						</div>
+						<div class="config-stat">
+							<span class="stat-name">Recall:</span>
+							<span class="stat-value">0.679</span>
+						</div>
+					</div>
+					<div class="config-details">
+						<h4>Configuration Details:</h4>
+						<ul>
+							<li><strong>Architecture:</strong> Bidirectional LSTM</li>
+							<li><strong>Embedding:</strong> Word2Vec Skipgram</li>
+							<li><strong>Hidden Dim:</strong> 256</li>
+							<li><strong>Batch Size:</strong> 32</li>
+							<li><strong>Layers:</strong> 2</li>
+						</ul>
+					</div>
+				</a>
+			</div>
+		</section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Islamophobia Content Analytic Based On Deep Learning Approach For Hierachical Classification Cross Platform Social Media Data</p>
+        </div>
+    </footer>
+
+    <script>
+        // Update the file input handler
+		document.getElementById('datasetFile').addEventListener('change', function(e) {
+			const file = e.target.files[0];
+			if (file) {
+				if (file.type === 'text/csv' || file.name.endsWith('.csv')) {
+					// Store file info
+					const fileInfo = {
+						name: file.name,
+						size: file.size,
+						type: file.type,
+						lastModified: file.lastModified
+					};
+					localStorage.setItem('csvFileInfo', JSON.stringify(fileInfo));
+					
+					// Read and store the file content for processing
+					const reader = new FileReader();
+					reader.onload = function(e) {
+						localStorage.setItem('selectedCSVFile', e.target.result);
+						window.location.href = 'uploaddatasetprocess1.html';
+					};
+					reader.readAsText(file);
+				} else {
+					alert('Please select a valid CSV file.');
+					this.value = ''; // Reset file input
+				}
+			}
+		});
+
+        // Single text analysis handling
+        document.getElementById('analyzeBtn').addEventListener('click', function() {
+            const textInput = document.getElementById('textInput').value.trim();
+            
+            if (textInput === '') {
+                alert('Please enter some text to analyze.');
+                return;
+            }
+            
+            // Store the text in localStorage to pass to the analysis page
+            localStorage.setItem('textToAnalyze', textInput);
+            
+            // Redirect to the analysis page
+            window.location.href = 'singletextanalysisprocess1.html';
+        });
+
+        // Alternative: Add event listener for Enter key in textarea
+        document.getElementById('textInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                document.getElementById('analyzeBtn').click();
+            }
+        });
+    </script>
+</body>
+</html>

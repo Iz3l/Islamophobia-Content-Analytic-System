@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Analyzing Text - Islamophobia Detection</title>
+		<link rel="icon" type="image/x-icon" href="images/islam2.ico">
+		<link rel="stylesheet" href="styleResult1.css">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	</head>
+	<body>
+		<!-- Header -->
+		<header class="navbar">
+			<div class="nav-container">
+				<div class="logo">
+					<h1>Islamophobia Detection System</h1>
+					<span class="subtitle">Text Analysis</span>
+				</div>
+				<nav class="nav-links">
+					<a href="index.html" class="nav-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Loading Screen -->
+		<main class="container">
+			<section class="section">
+				<div class="loading-container" id="loadingScreen">
+					<div class="loading-content">
+						<div class="loading-animation">
+							<div class="loading-spinner">
+								<div class="spinner-ring"></div>
+								<div class="spinner-ring"></div>
+								<div class="spinner-ring"></div>
+								<div class="spinner-core"></div>
+							</div>
+							<div class="ai-thinking">
+								<i class="fas fa-brain"></i>
+								<span>AI Analyzing</span>
+							</div>
+						</div>
+						<h2>Analyzing Text Content</h2>
+						<p id="loadingText">Processing your text with our BiLSTM model...</p>
+						
+						<div class="progress-section">
+							<div class="progress-header">
+								<span>Processing Progress</span>
+								<span id="progressPercent">0%</span>
+							</div>
+							<div class="progress-container">
+								<div class="progress-bar" id="progressBar">
+									<div class="progress-glow"></div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="loading-details">
+							<div class="detail-item">
+								<i class="fas fa-text-height"></i>
+								<span>Text Length: <strong id="textLength">0</strong> characters</span>
+							</div>
+							<div class="detail-item">
+								<i class="fas fa-clock"></i>
+								<span id="estimatedTime">Estimated time: Calculating...</span>
+							</div>
+							<div class="detail-item">
+								<i class="fas fa-microchip"></i>
+								<span>Model: BiLSTM with CBOW Embeddings</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Results Section (Initially Hidden) -->
+				<div class="results-container" id="resultsSection" style="display: none;">
+					<div class="section-header">
+						<div class="success-animation">
+							<i class="fas fa-check-circle"></i>
+						</div>
+						<h2>Analysis Complete</h2>
+						<p>Text classification results from our BiLSTM model</p>
+					</div>
+
+					<div class="results-grid">
+						<!-- Original Text -->
+						<div class="result-card">
+							<div class="card-header">
+								<i class="fas fa-file-alt"></i>
+								<h3>Original Text</h3>
+							</div>
+							<div class="text-content">
+								<div class="text-scroll">
+									<p id="originalText"></p>
+								</div>
+								<div class="text-stats">
+									<span class="stat-badge">
+										<i class="fas fa-ruler"></i>
+										<span id="textLengthResult">0 chars</span>
+									</span>
+									<span class="stat-badge">
+										<i class="fas fa-clock"></i>
+										<span id="processingTimeBadge">0s</span>
+									</span>
+									<span class="stat-badge">
+										<i class="fas fa-microchip"></i>
+										<span id="processingTime">0s</span>
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Classification Results -->
+						<div class="result-card">
+							<div class="card-header">
+								<i class="fas fa-chart-bar"></i>
+								<h3>Classification Results</h3>
+							</div>
+							<div class="classification-results">
+								<div class="result-item">
+									<div class="result-icon">
+										<i class="fas fa-bullseye"></i>
+									</div>
+									<div class="result-content">
+										<span class="result-label">Target Classification</span>
+										<span class="result-value" id="targetResult"></span>
+									</div>
+								</div>
+								
+								<div class="result-item">
+									<div class="result-icon">
+										<i class="fas fa-exclamation-triangle"></i>
+									</div>
+									<div class="result-content">
+										<span class="result-label">Sentiment Level</span>
+										<span class="result-value" id="severityResult"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="action-buttons">
+						<button class="btn btn-primary" onclick="window.location.href='UserHomePage.html'">
+							<i class="fas fa-redo"></i>
+							Analyze Another Text
+						</button>
+						<button class="btn btn-secondary" onclick="downloadResults()">
+							<i class="fas fa-download"></i>
+							Download Results
+						</button>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer class="footer">
+			<div class="footer-content">
+				<p>&copy; 2025  Islamophobia Content Analytic Based On Deep Learning Approach For Hierachical Classification Cross Platform Social Media Data</p>
+			</div>
+		</footer>
+		<script>
+			// Get the text from localStorage
+			const textToAnalyze = localStorage.getItem('textToAnalyze');
+			
+			// Function to call the backend API - NO MOCK DATA
+			async function analyzeWithModel(text) {
+				try {
+					const response = await fetch('http://localhost:5001/api/analyze', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({ text: text })
+					});
+					
+					const result = await response.json();
+					
+					if (result.success) {
+						return result;
+					} else {
+						throw new Error(result.error || 'API request failed');
+					}
+				} catch (error) {
+					console.error('API Error:', error);
+					// NO FALLBACK TO MOCK DATA - show error instead
+					alert('Error connecting to the AI model. Please make sure the server is running on port 5001.');
+					return {
+						success: false,
+						error: error.message
+					};
+				}
+			}
+
+			// Main function to show results
+			async function showResults() {
+				document.getElementById('loadingScreen').style.display = 'none';
+				document.getElementById('resultsSection').style.display = 'block';
+				
+				// Use ONLY real API - no mock data
+				const analysisResult = await analyzeWithModel(textToAnalyze);
+				
+				if (!analysisResult.success) {
+					// Show error message
+					document.getElementById('targetResult').textContent = 'Error';
+					document.getElementById('severityResult').textContent = 'Error';
+					document.getElementById('processingTimeBadge').textContent = 'Error';
+					document.getElementById('processingTime').textContent = 'Error';
+					return;
+				}
+				
+				// Display REAL results from your BiLSTM model
+				const targetResult = document.getElementById('targetResult');
+				targetResult.textContent = analysisResult.predictions.target;
+				
+				const severityResult = document.getElementById('severityResult');
+				severityResult.textContent = analysisResult.predictions.severity;
+				
+				// Add CSS class based on severity level for colored box
+				severityResult.className = 'result-value severity-' + analysisResult.predictions.severity.toLowerCase().replace(' ', '-');
+				
+				// Add CSS class based on target for colored box
+				targetResult.className = 'result-value target-' + analysisResult.predictions.target.toLowerCase();
+				
+				// Update processing time
+				document.getElementById('processingTime').textContent = `${analysisResult.predictions.processing_time}s`;
+				document.getElementById('processingTimeBadge').textContent = `${analysisResult.predictions.processing_time}s`;
+				
+				// Download results function only
+				window.downloadResults = function() {
+					// Format results as plain text
+					const txtContent = 
+				`ISLAMOPHOBIA DETECTION ANALYSIS REPORT
+				=======================================
+
+				Analysis Date: ${new Date().toLocaleString()}
+				Model Used: BiLSTM with CBOW Embeddings
+
+				TEXT ANALYZED:
+				-------------
+				"${textToAnalyze}"
+
+				CLASSIFICATION RESULTS:
+				----------------------
+				Target Classification: ${document.getElementById('targetResult').textContent}
+				Sentiment Level: ${document.getElementById('severityResult').textContent}
+				Islamophobia Detected: ${analysisResult.predictions.islamophobia}
+				Confidence: ${Math.round(analysisResult.predictions.confidence * 100)}%
+				Processing Time: ${document.getElementById('processingTime').textContent}
+
+				MODEL DETAILS:
+				-------------
+				- Model: Hierarchical BiLSTM
+				- Target Classes: Islam, Muslim, Other
+				- Severity Classes: Neutral, Nonviolent_Hate, Promoting Violent
+				- Analysis Timestamp: ${new Date().toISOString()}
+
+				END OF REPORT`;
+					
+					const dataStr = "data:text/plain;charset=utf-8," + encodeURIComponent(txtContent);
+					const downloadAnchorNode = document.createElement('a');
+					downloadAnchorNode.setAttribute("href", dataStr);
+					downloadAnchorNode.setAttribute("download", "islamophobia_analysis_report.txt");
+					document.body.appendChild(downloadAnchorNode);
+					downloadAnchorNode.click();
+					downloadAnchorNode.remove();
+				};
+			}
+
+			// Simulate the analysis process when page loads
+			document.addEventListener('DOMContentLoaded', function() {
+				if (!textToAnalyze) {
+					window.location.href = 'index.html';
+					return;
+				}
+				
+				// Display the original text
+				document.getElementById('originalText').textContent = textToAnalyze;
+				const textLength = textToAnalyze.length;
+				document.getElementById('textLength').textContent = textLength;
+				document.getElementById('textLengthResult').textContent = `${textLength} chars`;
+				
+				// Calculate estimated time based on text length
+				const estimatedSeconds = Math.max(3, Math.min(10, Math.ceil(textLength / 100)));
+				document.getElementById('estimatedTime').innerHTML = `Estimated time: <strong>${estimatedSeconds} seconds</strong>`;
+				
+				// Start the progress animation
+				let progress = 0;
+				const progressBar = document.getElementById('progressBar');
+				const progressPercent = document.getElementById('progressPercent');
+				const progressInterval = setInterval(() => {
+					progress += 1;
+					progressBar.style.width = `${progress}%`;
+					progressPercent.textContent = `${progress}%`;
+					
+					// Update loading text based on progress
+					if (progress < 25) {
+						document.getElementById('loadingText').textContent = "Initializing analysis engine...";
+					} else if (progress < 50) {
+						document.getElementById('loadingText').textContent = "Processing text with BiLSTM model...";
+					} else if (progress < 75) {
+						document.getElementById('loadingText').textContent = "Analyzing hierarchical classification...";
+					} else if (progress < 90) {
+						document.getElementById('loadingText').textContent = "Finalizing detection results...";
+					} else {
+						document.getElementById('loadingText').textContent = "Preparing comprehensive report...";
+					}
+					
+					if (progress >= 100) {
+						clearInterval(progressInterval);
+						setTimeout(showResults, 800);
+					}
+				}, (estimatedSeconds * 1000) / 100);
+			});
+		</script>
+	</body>
+</html>

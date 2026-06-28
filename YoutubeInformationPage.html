@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Data - Islamophobia Detection</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Islamophobia Detection System</h1>
+                <span class="subtitle">YouTube Data Analysis</span>
+            </div>
+            <nav class="nav-links">
+                <a href="AdminHomePage.html" class="nav-link">← Back to Admin Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Dataset Overview -->
+        <section class="section">
+            <div class="section-header">
+                <h2>YouTube Dataset Overview</h2>
+                <p>Comprehensive analysis of YouTube comment data collection</p>
+            </div>
+            
+            <div class="content-card">
+                <h3>Dataset Information</h3>
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Dataset</th>
+                                <th>Source</th>
+                                <th>Keywords</th>
+                                <th>Before Filtering</th>
+                                <th>After Filtering</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>DATASET 2</td>
+                                <td>YouTube</td>
+                                <td>Islamophobia, anti-Islam, Muslim hate, anti-Muslim</td>
+                                <td>1,090</td>
+                                <td>1,026</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td colspan="3"><strong>Total</strong></td>
+                                <td><strong>1,090</strong></td>
+                                <td><strong>1,026</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Statistics -->
+        <section class="section">
+            <div class="section-header">
+                <h2>YouTube Dataset Statistics</h2>
+                <p>Detailed analysis of YouTube comment data</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">1,026</div>
+                    <div class="stat-label">Total Comments</div>
+                    <div class="stat-model">After Filtering</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">27,810</div>
+                    <div class="stat-label">Total Words</div>
+                    <div class="stat-model">Raw Dataset</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">5,639</div>
+                    <div class="stat-label">Unique Words</div>
+                    <div class="stat-model">Vocabulary Size</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">27.11</div>
+                    <div class="stat-label">Avg. Length</div>
+                    <div class="stat-model">Words per comment</div>
+                </div>
+            </div>
+		</section>
+
+		 <!-- Word Cloud Section -->
+		<section class="section">
+			<div class="content-card">
+				<h3>Word Cloud Visualization</h3>
+				<p>Visualization of most frequent terms in X comments related to Islam and Muslims</p>
+				
+				<!-- Simple Image-based Word Cloud -->
+				<div class="wordcloud-image-container">
+					<img src="images/dataset/ytwordcloud.jpg" alt="Reddit Word Cloud" class="wordcloud-image">
+				</div>
+			
+				<div class="frequent-words">
+					<h4>Top 20 Most Frequent Words:</h4>
+					<div class="word-tags">
+						<span class="word-tag">islamophobia (983)</span>
+						<span class="word-tag">not (463)</span>
+						<span class="word-tag">islam (417)</span>
+						<span class="word-tag">muslim (398)</span>
+						<span class="word-tag">muslims (369)</span>
+						<span class="word-tag">people (359)</span>
+						<span class="word-tag">about (252)</span>
+						<span class="word-tag">like (219)</span>
+						<span class="word-tag">there (218)</span>
+						<span class="word-tag">all (205)</span>
+						<span class="word-tag">just (200)</span>
+						<span class="word-tag">religion (198)</span>
+						<span class="word-tag">from (191)</span>
+						<span class="word-tag">hate (145)</span>
+						<span class="word-tag">because (137)</span>
+						<span class="word-tag">don (130)</span>
+						<span class="word-tag">anti (128)</span>
+						<span class="word-tag">against (120)</span>
+						<span class="word-tag">more (118)</span>
+						<span class="word-tag">fear (112)</span>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+        <!-- Text Statistics -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Text Length Analysis</h2>
+                <p>Distribution of comment lengths in the YouTube dataset</p>
+            </div>
+            
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <h4>Sentence Length Distribution</h4>
+                    <div class="chart-container">
+						<img src="images/dataset/ytsentencelengthdistribution.jpg" alt="Sentence Length Distribution" class="chart-image">
+					</div>
+					
+					 <div class="distribution-stats">
+						<div class="dist-item">
+							<span class="dist-range">1-10 words</span>
+							<span class="dist-count">173 (16.9%)</span>
+						</div>
+						<div class="dist-item">
+							<span class="dist-range">11-20 words</span>
+							<span class="dist-count">211 (20.6%)</span>
+						</div>
+						<div class="dist-item">
+							<span class="dist-range">21-30 words</span>
+							<span class="dist-count">124 (12.1%)</span>
+						</div>
+						<div class="dist-item">
+							<span class="dist-range">31-40 words</span>
+							<span class="dist-count">113 (11.0%)</span>
+						</div>
+						<div class="dist-item">
+							<span class="dist-range">41-50 words</span>
+							<span class="dist-count">80 (7.8%)</span>
+						</div>
+						<div class="dist-item">
+							<span class="dist-range">51+ words</span>
+							<span class="dist-count">325 (31.7%)</span>
+						</div>
+					</div>
+                </div>
+                
+                <div class="analysis-card">
+                    <h4>Extreme Length Examples</h4>
+                    <div class="extreme-examples">
+                        <div class="extreme-item">
+                            <h5>Longest Comment</h5>
+                            <p><strong>122 words</strong> (Comment Index: 4)</p>
+                            <p class="example-text">"im fed up hearing muslim apologists always deflecting claiming islamophobia anyone brings up anything criticises islam always spout shit like vast majority off muslims peaceful shouldnt made feel like radicals call shite think held more scrutiny account because radical muslim out spouting hate street corners screaming about jihad never once witnessed counter protest from moderate muslims condemning telling interpretation islam following wrong using teachings out off contex words so called muslims always use talk about radicals ohh ohh taking things out off context say there no true peaceful muslims only muslims act peacefully until right moment time no longer need act peaceful out off fear off seen truly radicals more self control all true peaceful muslims extinguished long ago not true muslim"</p>
+                        </div>
+                        <div class="extreme-item">
+                            <h5>Shortest Comment</h5>
+                            <p><strong>2 words</strong> (Comment Index: 935)</p>
+                            <p class="example-text">"islamophobia wrong"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="data-table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Minimum Length</td>
+                            <td>2 words</td>
+                            <td>Shortest comment in dataset</td>
+                        </tr>
+                        <tr>
+                            <td>Maximum Length</td>
+                            <td>122 words</td>
+                            <td>Longest comment (before truncation)</td>
+                        </tr>
+                        <tr>
+                            <td>Average Length</td>
+                            <td>27.11 words</td>
+                            <td>Mean comment length</td>
+                        </tr>
+                        <tr>
+                            <td>Total Words</td>
+                            <td>27,810</td>
+                            <td>Raw word count before filtering</td>
+                        </tr>
+                        <tr>
+                            <td>Filtered Words</td>
+                            <td>26,097</td>
+                            <td>After stopword removal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Classification Levels -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Classification Levels and Distribution %</h2>
+                <p>Hierarchical classification system applied to YouTube data</p>
+            </div>
+            
+            <div class="levels-grid">
+                <div class="level-card">
+                    <div class="level-header">
+                        <h3>Level 1: Target Classification</h3>
+                        <span class="level-badge">Target</span>
+                    </div>
+                    <div class="level-content">
+                        <h4>YouTube-Specific Patterns:</h4>
+                        <ul>
+                            <li><strong>Islam:</strong> Discussions about Islamic religion, doctrine, practices</li>
+                            <li><strong>Muslim:</strong> References to Muslim individuals, communities, culture</li>
+                            <li><strong>Other:</strong> General discussions, unrelated content</li>
+                        </ul>
+                        <div class="level-examples">
+                            <h5>Common Keywords:</h5>
+                            <div class="keyword-tags">
+                                <span class="keyword-tag">islamophobia</span>
+                                <span class="keyword-tag">islam</span>
+                                <span class="keyword-tag">muslim</span>
+                                <span class="keyword-tag">muslims</span>
+                                <span class="keyword-tag">religion</span>
+                                <span class="keyword-tag">anti-islam</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="level-card">
+                    <div class="level-header">
+                        <h3>Level 2: Sentiment Classification</h3>
+                        <span class="level-badge">Sentiment</span>
+                    </div>
+                    <div class="level-content">
+                        <h4>YouTube-Specific Manifestations:</h4>
+                        <ul>
+                            <li><strong>Promoting Violent:</strong> Direct hate speech, violent rhetoric, explicit prejudice</li>
+                            <li><strong>Nonviolent Hate::</strong> Stereotyping, misinformation, subtle discrimination</li>
+                            <li><strong>Neutral:</strong> Educational content, awareness posts, neutral discussions</li>
+                        </ul>
+                        <div class="level-examples">
+                            <h5>Common Contexts:</h5>
+                            <div class="context-tags">
+                                <span class="context-tag">video discussions</span>
+                                <span class="context-tag">religious debates</span>
+                                <span class="context-tag">awareness comments</span>
+                                <span class="context-tag">political arguments</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <div class="category-distribution">
+                        <div class="k1-distribution">
+                            <h5>Level 1: Target Classification</h5>
+                            <div class="distribution-bar">
+                                <div class="bar-label">Islam</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill islam" style="width: 77.8%"></div>
+                                    <span class="bar-value">77.8%</span>
+                                </div>
+                            </div>
+                            <div class="distribution-bar">
+                                <div class="bar-label">Muslim</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill muslim" style="width: 21.2%"></div>
+                                    <span class="bar-value">21.2%</span>
+                                </div>
+                            </div>
+                            <div class="distribution-bar">
+                                <div class="bar-label">Other</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill other" style="width: 15%"></div>
+                                    <span class="bar-value">1.0%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="k2-distribution">
+                            <h5>Level 2: Sentiment Classification</h5>
+                            <div class="distribution-bar">
+                                <div class="bar-label">Promoting Violent</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill hate" style="width: 13.9%"></div>
+                                    <span class="bar-value">13.9%</span>
+                                </div>
+                            </div>
+                            <div class="distribution-bar">
+                                <div class="bar-label">Nonviolent Hate</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill nonviolent" style="width: 23.7%"></div>
+                                    <span class="bar-value">23.75%</span>
+                                </div>
+                            </div>
+                            <div class="distribution-bar">
+                                <div class="bar-label">Neutral</div>
+                                <div class="bar-container">
+                                    <div class="bar-fill neutral" style="width: 62.4%"></div>
+                                    <span class="bar-value">62.4%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Islamophobia Content Analytic Based On Deep Learning Approach For Hierachical Classification Cross Platform Social Media Data</p>
+        </div>
+    </footer>
+</body>
+</html>

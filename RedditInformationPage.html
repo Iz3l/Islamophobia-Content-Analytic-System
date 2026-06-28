@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit Data - Islamophobia Detection</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style1.css">
+	<script src="InfomationPageJS.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Islamophobia Detection System</h1>
+                <span class="subtitle">Reddit Data Analysis</span>
+            </div>
+            <nav class="nav-links">
+                <a href="AdminHomePage.html" class="nav-link">← Back to Admin Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Dataset Overview -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Reddit Dataset Overview</h2>
+                <p>Comprehensive analysis of Reddit data collection</p>
+            </div>
+            
+            <div class="content-card">
+                <h3>Dataset Information</h3>
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Dataset</th>
+                                <th>Source</th>
+                                <th>Keywords</th>
+                                <th>Before Filtering</th>
+                                <th>After Filtering</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>DATASET 1</td>
+                                <td>Reddit</td>
+                                <td>Islam, Muslim, Mosque, terror, radical, extremist, jihad, sharia, hijab, halal</td>
+                                <td>4,210</td>
+                                <td>4,210</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td colspan="3"><strong>Total</strong></td>
+                                <td><strong>4,210</strong></td>
+                                <td><strong>4,210</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Statistics -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Reddit Dataset Statistics</h2>
+                <p>Detailed analysis of Reddit comment data</p>
+            </div>
+            
+				<div class="stats-grid">
+					<div class="stat-card">
+						<div class="stat-value">4,210</div>
+						<div class="stat-label">Total Comments</div>
+						<div class="stat-model">After Filtering</div>
+					</div>
+					<div class="stat-card">
+						<div class="stat-value">154,742</div>
+						<div class="stat-label">Total Words</div>
+						<div class="stat-model">Raw Dataset</div>
+					</div>
+					<div class="stat-card">
+						<div class="stat-value">16,412</div>
+						<div class="stat-label">Frequent Words</div>
+						<div class="stat-model">Vocabulary Size</div>
+					</div>
+					<div class="stat-card">
+						<div class="stat-value">36.76</div>
+						<div class="stat-label">Avg. Length</div>
+						<div class="stat-model">Words per comment</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Word Cloud Section -->
+			<section class="section">
+				<div class="content-card">
+					<h3>Word Cloud Visualization</h3>
+					<p>Visualization of most frequent terms in Reddit comments related to Islam and Muslims</p>
+					
+					<!-- Simple Image-based Word Cloud -->
+					<div class="wordcloud-image-container">
+						<img src="images/dataset/redditwordcloud.jpg" alt="Reddit Word Cloud" class="wordcloud-image">
+					</div>
+					
+					<div class="frequent-words">
+						<h4>Top 20 Most Frequent Words:</h4>
+							<span class="word-tag">not (1682)</span>
+							<span class="word-tag">people (1233)</span>
+							<span class="word-tag">terrorist (1020)</span>
+							<span class="word-tag">like (936)</span>
+							<span class="word-tag">from (906)</span>
+							<span class="word-tag">just (901)</span>
+							<span class="word-tag">all (886)</span>
+							<span class="word-tag">about (830)</span>
+							<span class="word-tag">israel (749)</span>
+							<span class="word-tag">there (742)</span>
+							<span class="word-tag">more (736)</span>
+							<span class="word-tag">terrorists (720)</span>
+							<span class="word-tag">because (712)</span>
+							<span class="word-tag">dont (674)</span>
+							<span class="word-tag">terrorism (581)</span>
+							<span class="word-tag">one (569)</span>
+							<span class="word-tag">right (565)</span>
+							<span class="word-tag">hamas (563)</span>
+							<span class="word-tag">think (554)</span>
+							<span class="word-tag">war (539)</span>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+        <!-- Text Statistics -->
+		<section class="section">
+			<div class="section-header">
+				<h2>Text Length Analysis</h2>
+				<p>Distribution of comment lengths in the Reddit dataset</p>
+			</div>
+			
+			<div class="analysis-grid">
+				<div class="analysis-card">
+					<h4>Sentence Length Distribution</h4>
+					<div class="chart-container">
+						<img src="images/dataset/redditsentencelengthdistribution.jpg" alt="Sentence Length Distribution" class="chart-image">
+					</div>
+					<div class="distribution-stats">
+						<div class="dist-item">
+							<span class="dist-range">1-10 words</span>
+							<span class="dist-count">701 (16.7%)</span>
+						</div>
+						<div class="dist-item">
+							<span class="dist-range">11-20 words</span>
+							<span class="dist-count">928 (22.0%)</span>
+						</div>
+						<div class="dist-item">
+							<span class="dist-range">21-30 words</span>
+							<span class="dist-count">640 (15.2%)</span>
+						</div>
+						<div class="dist-item">
+							<span class="dist-range">31-40 words</span>
+							<span class="dist-count">464 (11.0%)</span>
+						</div>
+						<div class="dist-item">
+							<span class="dist-range">41-50 words</span>
+							<span class="dist-count">367 (8.7%)</span>
+						</div>
+						<div class="dist-item">
+							<span class="dist-range">51+ words</span>
+							<span class="dist-count">1110 (26.4%)</span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="analysis-card">
+					<h4>Extreme Length Examples</h4>
+					<div class="extreme-examples">
+						<div class="extreme-item">
+							<h5>Longest Sentence</h5>
+							<p><strong>141 words</strong> (Sentence Index: 4)</p>
+							<p class="example-text">Longest proper sentence in the dataset containing 141 words...</p>
+						</div>
+						<div class="extreme-item">
+							<h5>Shortest Sentence</h5>
+							<p><strong>1 word</strong> (Sentence Index: 4196)</p>
+							<p class="example-text">"narcoterrorism"</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="data-table-container">
+				<table class="data-table">
+					<thead>
+						<tr>
+							<th>Metric</th>
+							<th>Value</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Minimum Length</td>
+							<td>1 word</td>
+							<td>Shortest comment in dataset</td>
+						</tr>
+						<tr>
+							<td>Maximum Length</td>
+							<td>141 words</td>
+							<td>Longest comment (before truncation)</td>
+						</tr>
+						<tr>
+							<td>Average Length</td>
+							<td>36.76 words</td>
+							<td>Mean comment length</td>
+						</tr>
+						<tr>
+							<td>Total Words</td>
+							<td>154,742</td>
+							<td>Raw word count before filtering</td>
+						</tr>
+						<tr>
+							<td>Filtered Words</td>
+							<td>149,549</td>
+							<td>After stopword removal</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+        <!-- Classification Levels -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Classification Levels and Distribution %</h2>
+                <p>Hierarchical classification system applied to Reddit data</p>
+            </div>
+            
+            <div class="levels-grid">
+                <div class="level-card">
+                    <div class="level-header">
+                        <h3>Level 1: Target Classification </h3>
+                        <span class="level-badge">Target</span>
+                    </div>
+                    <div class="level-content">
+                        <h4>Reddit-Specific Patterns:</h4>
+                        <ul>
+                            <li><strong>Islam:</strong> Discussions about Islamic doctrine, Quran, religious practices</li>
+                            <li><strong>Muslim:</strong> Posts about Muslim communities, individuals, cultural aspects</li>
+                            <li><strong>Other:</strong> General discussions, unrelated political topics</li>
+                        </ul>
+                        <div class="level-examples">
+                            <h5>Common Keywords:</h5>
+                            <div class="keyword-tags">
+                                <span class="keyword-tag">islam</span>
+                                <span class="keyword-tag">muslim</span>
+                                <span class="keyword-tag">mosque</span>
+                                <span class="keyword-tag">terror</span>
+                                <span class="keyword-tag">radical</span>
+                                <span class="keyword-tag">extremist</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="level-card">
+                    <div class="level-header">
+                        <h3>Level 2: Sentiment Classification</h3>
+                        <span class="level-badge">Sentiment</span>
+                    </div>  
+                    <div class="level-content">
+                        <h4>Reddit-Specific Manifestations:</h4>
+                        <ul>
+                            <li><strong>Promoting Violent:</strong> Direct calls for violence, explicit slurs, terrorist associations</li>
+                            <li><strong>Nonviolent Hate:</strong> Stereotyping, misinformation, subtle prejudice</li>
+                            <li><strong>Neutral:</strong> Factual discussions, educational content, neutral references</li>
+                        </ul>
+                        <div class="level-examples">
+                            <h5>Common Contexts:</h5>
+                            <div class="context-tags">
+                                <span class="context-tag">terrorist associations</span>
+                                <span class="context-tag">religious stereotypes</span>
+                                <span class="context-tag">cultural criticism</span>
+                                <span class="context-tag">political discussions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			<div class="analysis-grid">
+				<div class="analysis-card">
+					<div class="chart-placeholder">
+						<div class="category-distribution">
+							<div class="k1-distribution">
+								<h5>Level 1: Target Classification</h5>
+								<div class="distribution-bar">
+									<div class="bar-label">Islam</div>
+									<div class="bar-container">
+										<div class="bar-fill islam" style="width: 29.1%"></div>
+										<span class="bar-value">29.1%</span>
+									</div>
+								</div>
+								<div class="distribution-bar">
+									<div class="bar-label">Muslim</div>
+									<div class="bar-container">
+										<div class="bar-fill muslim" style="width: 42.1%"></div>
+										<span class="bar-value">42.1%</span>
+									</div>
+								</div>
+								<div class="distribution-bar">
+									<div class="bar-label">Other</div>
+									<div class="bar-container">
+										<div class="bar-fill other" style="width: 28.8%"></div>
+										<span class="bar-value">28.8%</span>
+									</div>
+								</div>
+							</div>
+							
+							<div class="k2-distribution">
+								<h5>Level 2: Sentiment Classification</h5>
+								<div class="distribution-bar">
+									<div class="bar-label">Promoting Violent</div>
+									<div class="bar-container">
+										<div class="bar-fill hate" style="width: 20.3%"></div>
+										<span class="bar-value">20.3%</span>
+									</div>
+								</div>
+								<div class="distribution-bar">
+									<div class="bar-label">Nonviolent Hate</div>
+									<div class="bar-container">
+										<div class="bar-fill nonviolent" style="width: 49%"></div>
+										<span class="bar-value">49%</span>
+									</div>
+								</div>
+								<div class="distribution-bar">
+									<div class="bar-label">Neutral</div>
+									<div class="bar-container">
+										<div class="bar-fill neutral" style="width: 30.7%"></div>
+										<span class="bar-value">30.7%</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Islamophobia Content Analytic Based On Deep Learning Approach For Hierachical Classification Cross Platform Social Media Data</p>
+        </div>
+    </footer>
+</body>
+</html>
